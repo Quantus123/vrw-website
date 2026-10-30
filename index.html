@@ -247,6 +247,53 @@ footer p { color: color-mix(in srgb, var(--brand-ink) 78%, transparent); }
 footer nav { display: flex; flex-wrap: wrap; gap: 18px; }
 footer a { text-decoration: none; }
 footer a:hover { text-decoration: underline; }
+/* Content update: lists, phases, trainings tabs, steps */
+.lede + .lede { margin-top: 12px; font-size: 1.05rem; }
+.lede strong { color: var(--accent); font-weight: 600; }
+.ticks { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; align-content: start; }
+.ticks.two { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 32px; }
+.ticks li { position: relative; padding-left: 30px; font-size: 1.05rem; }
+.ticks li::before { content: ""; position: absolute; left: 0; top: 0.3em; width: 18px; height: 18px; border-radius: 50%; background: var(--brand); box-shadow: inset 0 0 0 5px var(--brand), inset 0 0 0 9px var(--accent); }
+.sub-h { margin: 48px 0 18px; font-size: 1.35rem; }
+.phases { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; counter-reset: ph; }
+.phases > div { background: var(--surface); border: 1px solid var(--line); border-top: 4px solid var(--brand); border-radius: var(--r); padding: 20px 22px; counter-increment: ph; }
+.phases b { display: block; font: 700 1.1rem/1.2 var(--f-display); margin-bottom: 10px; }
+.phases b::before { content: counter(ph) " · "; color: var(--brand); }
+.phases ul { margin: 0; padding-left: 18px; color: var(--muted); display: grid; gap: 6px; }
+.policy { margin: 6px 0; padding: 18px 22px; border-left: 4px solid var(--accent); background: var(--tint); border-radius: 0 var(--r) var(--r) 0; color: var(--fg); font-style: italic; }
+.policy b { display: block; font: 500 0.75rem/1 var(--f-mono); letter-spacing: 0.1em; text-transform: uppercase; font-style: normal; color: var(--brand); margin-bottom: 8px; }
+.svc-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; counter-reset: sv; }
+.svc-list li { counter-increment: sv; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 22px; color: var(--muted); font-size: 0.98rem; display: grid; gap: 8px; align-content: start; }
+.svc-list b { color: var(--fg); font: 700 1.08rem/1.25 var(--f-display); }
+.svc-list b::before { content: counter(sv, decimal-leading-zero) "  "; font: 500 0.8rem var(--f-mono); color: var(--brand); }
+.tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+.tabs button { font: 600 0.98rem var(--f-body); padding: 10px 18px; border-radius: 999px; cursor: pointer; border: 1px solid color-mix(in srgb, var(--brand-ink) 35%, transparent); background: transparent; color: var(--brand-ink); }
+.tabs button[aria-selected="true"] { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.pane-intro { margin-bottom: 24px; max-width: 48rem; color: color-mix(in srgb, var(--brand-ink) 85%, transparent); }
+.levels.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.courses { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.courses article { border: 1px solid color-mix(in srgb, var(--brand-ink) 22%, transparent); border-radius: var(--r); padding: 22px; background: color-mix(in srgb, var(--brand-ink) 5%, transparent); display: grid; gap: 8px; align-content: start; }
+.courses p { color: color-mix(in srgb, var(--brand-ink) 82%, transparent); font-size: 0.98rem; }
+.steps10 { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 40px; counter-reset: st; }
+.steps10 li { counter-increment: st; position: relative; padding: 16px 0 16px 52px; border-top: 1px solid var(--line); }
+.steps10 li::before { content: counter(st, decimal-leading-zero); position: absolute; left: 0; top: 16px; width: 36px; height: 36px; border-radius: 50%; background: var(--brand); color: var(--brand-ink); display: grid; place-items: center; font: 500 0.8rem var(--f-mono); }
+.steps10 b { display: block; font: 700 1.05rem/1.3 var(--f-display); padding-top: 6px; }
+.steps10 span, .steps10 ul { color: var(--muted); font-size: 0.96rem; }
+.steps10 ul { margin: 6px 0 0; padding-left: 18px; display: grid; gap: 3px; }
+.steps10 li li { padding: 0; border: 0; counter-increment: none; }
+.steps10 li li::before { content: none; }
+.closing { margin-top: 28px; font: 600 1.15rem/1.45 var(--f-display); max-width: 46rem; }
+.stat { display: flex; align-items: baseline; gap: 10px; margin-top: 8px; }
+.stat b { font: 800 3.2rem/1 var(--f-display); color: var(--brand); }
+.stat span { color: var(--muted); }
+:root[data-theme="dark"] .stat b, :root[data-theme="dark"] .policy b { color: var(--accent); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .stat b, :root:not([data-theme="light"]) .policy b { color: var(--accent); } }
+.strip .wrap { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.inds { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 980px) { .svc-list { grid-template-columns: repeat(2, minmax(0, 1fr)); } .strip .wrap { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 760px) { .phases, .courses, .levels.two, .steps10, .ticks.two { grid-template-columns: 1fr; } .strip .wrap { grid-template-columns: repeat(2, minmax(0, 1fr)); } .inds { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .svc-list { grid-template-columns: 1fr; } }
+@media (max-width: 440px) { .inds, .strip .wrap { grid-template-columns: 1fr; } }
 </style>
 
 </head>
@@ -262,9 +309,8 @@ footer a:hover { text-decoration: underline; }
       <a href="#about">About</a>
       <a href="#founder">Founder</a>
       <a href="#services">Consulting</a>
-      <a href="#certifications">Certifications</a>
-      <a href="#training">FoSTaC Training</a>
-      <a href="#team">Trainers</a>
+      <a href="#trainings">Trainings</a>
+      <a href="#resources">Resources</a>
       <a class="btn btn-accent" href="#contact">Get a quote</a>
     </nav>
   </div>
@@ -275,11 +321,12 @@ footer a:hover { text-decoration: underline; }
     <div class="wrap">
       <div>
         <p class="eyebrow">Food safety consulting · Certification · Training</p>
-        <h1>Safe food, certified kitchens and <em>trained people</em> behind every plate.</h1>
-        <p class="lede">VRW helps food businesses get licensed, get certified and stay audit-ready. As an FSSAI Training Partner, we also run FoSTaC courses delivered by trained trainers and assessed by trained assessors.</p>
+        <h1>Certified kitchens and units, and <em>trained people</em> behind every safe food plate.</h1>
+        <p class="lede"><strong>We provide well-structured solutions from concept to certification.</strong></p>
+        <p class="lede">VRW helps food businesses get trained, certified and stay audit-ready. As a training provider (including FSSAI FoSTaC), our trainings are delivered by expert trainers and assessed by experienced assessors. We have vast experience in consultancy for international management standards across production units, food and feed processing industries, hospitals, educational institutes, software companies, traders and distributors, hotels and packaging industries.</p>
         <div class="ctas">
           <a class="btn btn-accent" href="#contact">Book a free consultation</a>
-          <a class="btn btn-ghost" href="#training">See FoSTaC courses</a>
+          <a class="btn btn-ghost" href="#trainings">See our trainings</a>
         </div>
       </div>
       <aside class="badge-card" aria-label="FSSAI Training Partner">
@@ -291,8 +338,8 @@ footer a:hover { text-decoration: underline; }
           </div>
         </div>
         <ul>
-          <li>Basic, Advanced and Special level courses</li>
-          <li>Trained trainers and independent assessors</li>
+          <li>Basic and Advanced level courses</li>
+          <li>Expert trainers and independent assessors</li>
           <li>Certificates issued through FSSAI's FoSTaC programme</li>
           <li>On-site batches for your staff, or open batches</li>
         </ul>
@@ -302,32 +349,64 @@ footer a:hover { text-decoration: underline; }
 
   <div class="strip">
     <div class="wrap">
-      <div><b>FSSAI licensing</b><span>Registration, State and Central licences</span></div>
-      <div><b>Food certifications</b><span>ISO 22000, FSSC 22000, HACCP, BRCGS and more</span></div>
+      <div><b>Management system trainings</b><span>Awareness, internal audit and more</span></div>
+      <div><b>Quality &amp; food safety</b><span>Training and consultancy for ISO 9001, ISO 22000, FSSC 22000, HACCP, BRCGS and more</span></div>
       <div><b>FoSTaC training</b><span>Food Safety Supervisors and handlers</span></div>
-      <div><b>Audit support</b><span>From gap assessment to certificate</span></div>
+      <div><b>Audit support</b><span>Gap assessment to certificate, internal, hygiene and second-party audits</span></div>
+      <div><b>FSSAI licensing</b><span>Registration, State and Central licences</span></div>
     </div>
   </div>
 
-  <section class="section" id="about">
+  <section class="section" id="benefits">
     <div class="wrap about">
       <div class="section-head">
-        <p class="eyebrow">About VRW</p>
-        <h2>One partner for compliance, certification and food safety training.</h2>
+        <p class="eyebrow">Why certify</p>
+        <h2>Benefits of system certification</h2>
+        <p>Our services have helped many organisations implement efficient and effective management practices and systems, leading to certification to international standards.</p>
       </div>
-      <div class="about-body">
-        <p><strong>V R The World Professional Services (VRW)</strong> is a food consulting firm. We work with manufacturers, restaurants, caterers, cloud kitchens, retailers, warehouses and exporters to build food safety systems that pass audits and work on the shop floor.</p>
-        <p>We cover every common food certification, from FSSAI licensing to international GFSI-benchmarked schemes. Because we are also an FSSAI Training Partner, your team gets trained by the same people who help you implement the system.</p>
-        <div class="values">
-          <div><b>Practical</b><span>Procedures your staff can follow</span></div>
-          <div><b>Audit-ready</b><span>Records that stand up to inspection</span></div>
-          <div><b>End to end</b><span>Licence, system, training, certificate</span></div>
-        </div>
-      </div>
+      <ul class="ticks">
+        <li>Improved product, process and service quality</li>
+        <li>A seal of safety on your food service</li>
+        <li>Improved efficiency</li>
+        <li>Competitive advantage and stronger customer confidence</li>
+        <li>Meets a contractual obligation or expectation in many industry sectors</li>
+        <li>Less contamination, product destruction and recalls</li>
+      </ul>
     </div>
   </section>
 
-  <section class="section band" id="founder">
+  <section class="section band" id="about">
+    <div class="wrap">
+      <div class="about">
+        <div class="section-head">
+          <p class="eyebrow">About VRW</p>
+          <h2>One partner for compliance, certification and food safety training.</h2>
+        </div>
+        <div class="about-body">
+          <p><strong>V R The World</strong> is a management system consulting firm of Lead Auditors, MBAs, Food Technologists, Microbiologists, Food Engineers, IHM graduates and retired government employees. Our team is specially trained in developing quality management systems for many industries, and specialises in international certifications such as ISO 9001:2015, ISO 22000, FSSC 22000, FAMI-QS, BRC (all sectors), ISO 14001, HACCP, GMP, OHSAS, 5S/TQM, Halal and Kosher.</p>
+          <p>We work with manufacturers, restaurants, caterers, cloud kitchens, retailers, warehouses and exporters to build food safety systems that pass audits and work on the shop floor.</p>
+        </div>
+      </div>
+      <h3 class="sub-h">Scope, support and maintenance</h3>
+      <div class="phases">
+        <div><b>Planning</b><ul><li>Identification of system development needs</li><li>System counselling</li><li>Planning improvement with the certification body</li></ul></div>
+        <div><b>Implementation</b><ul><li>Identification of management training needs and documentation review</li><li>System and process implementation and registration</li><li>Identifying and facilitating internal audits</li></ul></div>
+        <div><b>Review &amp; certification</b><ul><li>Evaluation of training and review of audit</li><li>System-related final audit</li><li>Certification issued</li></ul></div>
+      </div>
+      <h3 class="sub-h">What you will get out of our services</h3>
+      <ul class="ticks two">
+        <li>Enhanced customer satisfaction and reliability</li>
+        <li>Food safety risks in your plant reduced to an acceptable level or eliminated</li>
+        <li>Qualified internal auditors</li>
+        <li>Improved operational controls</li>
+        <li>Employee skill upgradation</li>
+        <li>Improved work culture and a professional business approach</li>
+        <li>Meeting pre-requisites in tenders, and market recognition</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="founder">
     <div class="wrap">
       <div class="section-head">
         <p class="eyebrow">From the Founder's desk</p>
@@ -336,64 +415,47 @@ footer a:hover { text-decoration: underline; }
       <div class="desk">
         <div class="desk-who">
           <img class="portrait" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAQDAwQDAwQEBAQFBQQFBwsHBwYGBw4KCggLEA4RERAOEA8SFBoWEhMYEw8QFh8XGBsbHR0dERYgIh8cIhocHRz/2wBDAQUFBQcGBw0HBw0cEhASHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBz/wAARCAGQAZADASIAAhEBAxEB/8QAHQAAAAcBAQEAAAAAAAAAAAAAAgMEBQYHCAEACf/EAEMQAAIBAwIEBQIEBAUEAgECBwECAwAEEQUhBhIxQQcTIlFhMnEUQoGRCCOhsRUzUsHhJDRi0RZDcheCGCVTY5Lw8f/EABoBAAMBAQEBAAAAAAAAAAAAAAABAgMEBQb/xAAnEQACAgIDAAEEAgMBAAAAAAAAAQIRAyEEEjFBBRMiUTJxIzORof/aAAwDAQACEQMRAD8AqYriuY3G3ejK8BuPvWdllv8Ah2cLH9quLPpH2qmvD05WP7Vcaj0KfitYmbFul4/FpVmaZ/lLVYabtdoas/TD/JWnIURdQWoVcPSoKCyN65Qid64KQHK9XTXKAPVw10716gANerprlAHq4a9mu0wA16hUlvL63sYXlnmihjQczSSuAqj70AHk4r2cDoTVFeIX8UHCvBsr2Vg/+KX4znyVIjj+7GszcX/xRcY8URzW8UsenWz/AJbZ2DnfbLf7Cgai2by1vi/SeH0L6hqNpaKBkCSTLn7KN6rvVP4ieEdPYKt9NdEsRi1iyB92NYAuOItWv/Me8vbuUybtI0hY59yTSLHMctccyjfBfY0WV1NyP/EzpFzNKLbRdVdSDyzGVY0Ue5OSQSfimS48e+J3hkksY7BQ78sEN3IWkf7Nyhf3NY8jiM8nNBIsYByvqwR7b0/211dWuFueZoepJIZT8HfpQKjTM38Seu2xhW9Fo6gvHhUK8zjHpI6oRvv0NO//APEFJ5sTfg5jDcsEjYnOG5RzKPsTse+ayDf37CUzryFGPNyoMKPtT7peuDyovWSfqGTsMdCPmig0fQPQeObDUNPtZ0vWeKRMAOuZCw+oHG+altrex3MHnAHk6Fgc4+/tWFeHuOJNM1CC/hilfkyEUSbhiOpx1B71KLzxq4hlsy1nqH4UiZnRYyOcgDfmY9R7Cn1EbLUh1DoeZD0I3FeBGetYz0z+IziLTJIEndLhR6pHTDkD5C4B+1XHwP8AxDaPxOiR30Bs5geVnz6M/Oen60NMRdLHGaZNU6GnOC7huolkicMh6EGmzVN161DGiMyfWaBQpNnagE7VBR3agMfauFs1zrvQAE1yumuUACr1cxXaAPVw12vEZoALNBow1wjFOwODpXDXs712gAJ6V7Arp61ygDGm1eGMigr0rvtQBbXh2dk+1XMv+Wv2qlvDgn+XV1IP5S1vHwzYo03/ALpKs3SzmFftVZ2G1ylWVpW8IoYkOQrhrtcNSUAI3oNDIoBGKQHq9Xq7gCkByvV6vUAeoJ70LOKCe9AAaAZMZ5TnHX4pDrGr22i2E95eSpDbxLzM7uAAP/8Adqxx48/xMXuoPc8NcJ3KQWI9FxfQt6pT3VD/AHIpglZeHif/ABH8K8ARz2sNwmr64gwun2bZwf8A+4/QD461i7xD8ZuK/Ee7ka+u3tbIkgWkEnLEB7VXM90wYtJJ/MO53yx+9IJbmSbbHToKC/BdcXcbE8y85xg46H9e5or8UfLwgVBnJ2pLjI+osR1A6CjEJCnmRAP/ACJooLFcF6VfLXDfYPihpcc55f5bLmiURsjIb4CoB/elEfmghPKnCZ+vkBqkhWONm7eaALVXB6AnHN8g0pvrkrCQxkVUOAppIZ1t4irhjjf0+k/em6e5M49MhYnu3X9aqqCw6TUlVWjGApBOB3PyK5Z6tycyk8sag8mOpJpqjtpLgluXKlscwPSj5LCS0ZOcf/iT3B71NoKJTFr8jKscbMuFxle1LI73kRTJOGbuBuR+lRAOEzhy5xvg4AJp2s4dlIChf9RBOad2A5fjWidy1wyqwzyCjbPXZrSYNbscH6gpzmkh8qEhXaEkDOEDA0ikuLWN8kY5R6Wcbg/pVEmgvDrx61Lhi5tLXVJWl05TyuBvIqY6fODvg1qPhvj3SuNNPabT7qOUr1A2OPfHavmzGJojzK4mU+oD6ifmpnwdxrqvDF7Be6ZeNE6vkxndXx2P/qocQTN7yfU1EEneopwXx7Y8X2FtcxERyzLlouYHlYfUB361LG3Ge1YNUWBr2a9XqAOGuV01ygD2fmug0HFdC0ACr1er1AHCKCaHQaYAcV6ukUE0Acr1er1AGNVXahAdq8vShUAWp4dgBU+1XRFvCtUl4dk5Srsiz5K1tHwzkKbPa4j+9WTpH+SKrS1P/Ux1Zekf5C02KI516vdqDUlHjQaFQDSA8a5mvV6kB6vV6uUAeO29N+panb6fbSz3E8UEESl5JZWwsaDqSa7qur2uk2VxeXsyw2tspeSRtgAKwP49+P11x1Pc6RpMrpoyy4Z0bAmA6Lj2zuSetAJWC/iB8e5OP9Rk0TRZZIuHoHwG/NdsPzN/41niSYE55ifdwP6CgXFzjYMST1b2pP6sFmPKMdTTov8AoGB5uOXOfY1weklncDHYGihKScIPT8964AEILkAn+tMQcbhSSBGT7fFDXnYjDKCOxFJhJ2RV/WlEasU3lUf+I2pgLIA6AMX677Yp3tZRCuRJdBsZwqDH602Wfmxj0CMt2DGnWNpQCsjxsMeoqelVQrDJr0SQDnjJDekloyoJoFppJu7mOOBULOCNznPxR8CpMAZZnjXGOXqDUs4Ws7WK4WW8MLwc4SQIcOh/K3/NROVIuEbYyQcPS6VaXAuIHD4KcmMHPao7rKCa6dzzoqgKkZ+BjFaC40tfx1nbzmTzMQjzZUABkA+n7HHWqD1mePz3jjBWMEnHfm+9Yxdm04pIb7S0LnEioi5yATkmn+ya0hwBPGHzg42FRsFlZT6c9SetLop1Zl2QfOcljWyZgyRvP+JyIJPSvTlptu7J+rcrftR1nOCADLEm2+VO9HukZIEiowP/APTzn+taWQ0NEdqsCl4TlhuUG3LRrX8cr5uEaNTt6RilStExZFHLK2wDjf7UgutPmidpAZF33X2/2xQhE14Q4v1Lhe9huLa5ZrPnVmwMnAPf5rZ3CHFdpxVpkV1bSI+2WC/3+xr5/WOoG0mKSDGdhnoat3ws49bhbVERJXSwuGHMCOYRt749qmUbBOjYxOaAxIpLpmoR6jZQ3Ef+XKvMpByPtSlxWDNEdyTXQKAo3oYNKgO4r1er2aYHM14V7vXaAPUGu5rlAHCa5XT1rlAATQSTQz1oDCgDHKGhUFelCoAs3w7O6Vd0P+Sv2qjfDxvWgq8IM+Qv2rWHhDD7U4uU+9WXo5zEtVlbZFxH96svRTmJaqQkO3auUI0GoYzhNArrda5SA9Xq9XG6UAeJwKTXd3HaW8s8zKkUa8zM3QCjZHCrnO/zWZv4j/GyLh+KbQ9OumF5CPUkbjLSEenP/ivU/NAIrr+KLxnudTkHCOny+XZhVluORvVITuFOOn2rKE056d22yP8AajdT1KW+upZ5nL3Mp5nc9WY9SaSBAgBZsFuvwKC/NHAVjHMTzHH7fFFFjJ62YBPavMVkYsfoHSk882dl6e1USwxrhUGw+1AWUsRzKCDRQXI9VCUqvyaBB6SIccoPzR2Iyc5b+1ASJ3XmRRg+21GxxFmA5s4PTqKoBXaNGAQpcZ6mnmFUeLBjfHdiwOaabS0aSRh6ic9FOBipLpWjSu/lsik45uRnO/3xQ5IpQbFukwsW5YwjudvUuSBUrtdDkhYCBInkkX/6zjAPeidK4cuBJEjh1HUBR/TPWpbBwtchz/MiFsq4jUk5H3Peuac1+zqx4n+j2nx3Op2OoW9xILNMM8j4ypAAA5T/AHqmNW038Be3CGdZ8b5A2396u2wsRpdveoZTLE/qePPMBnZv/dVhxBaSA3jRRrKplIckZC/NRCWzTJH8Sv7hmYIOiHriuC6lBVIhyn3PalT6a8jLhSSTjak89u8DGMAhl6nqa3UjjkhTFPJEAV5yzfUR1o0PK+WUsD7c/WmhJbjmID8lKYZihzJM7nPQADFaKRI5jV7y3V0KICdumT+hpx0vVY3HKxdAeo+pf1pLbTRSRgEKQT0O5/eljQW8JLxxIWx0Xf8ArVkMHqOmyMqyJGrwsdyvb5oGm3n4W48hpCd8epcY+KPs9USP+RIOTfJUnFH6pYc8aywlSoOSSO3t/wCjVUI0r4F8ci5g/wAGuJlJXIQM26nsR7+1Xr1HTFYF4Z159H1aGaM8siDOM4DfI+a25wjrsPEGk290jHmZAHGfzYzWGSNOyosf8V0CuYr1Zlgq9ig10GgDtcNeJrmaAPVzNcr1AHeu9cr1B70AdPWgmu5oJNAGOUOaFRCNRqnagCyfDz/MU1eUDAwJ9qorw9fDgfNXlbHMC/atoeGchRAcTxn5qytF/wApDVZwH+en3qytEP8AKTemxIej3oJ2rprjVDKAkZNBG9CoNIDuKAxGd+g3oWfmk11ci3jaQjJ6KoO7HsKYrIZ4mcbW/BfC97ftcRW9w/8A01q0hxmdgcH7L1/avmNxpxDLxBrt7fvLJK8rbSSHLMBtzH77mrw/in8TBrvF50TT7ppLXSYzDOwPoMx3fl/t+lZnZmmkLnoB0z1pFrR1G9XMDk5zk9/muOxck78g657mvRoeVn6KNgfek88m3bApg2FSy5OBsoopBzNk5riKZn+r96N5goPb+5pkhwTnAHKcdcmu+ZGmBjB+2aTPIeQAN9VH26FiMZf/AGoAPhRpnOCwx0qQaPpE91KpkPKvztQdL01gBhCxberV4P4f/EPArIjr9TBj0P3rny5uq0deDjub2B0LgY3SIY7dxIF+onIPzVnaR4ctDJFLHCY4zGC3MFJJ96lHDOgrBEplLcjHtjH2qwLGKOMcqIixHt3NeZPkyZ7eLhxirZDI+GLaG0EZtgkjn61Gc/pTtBo8cqqjxqFP/wBRXkX9T1/SpSIhI4xHgL0ydzRM0TEkEDGdgKx+6zf7MSqPEHSJF0+b8FCkjRqVComMA98+1UfwvwzqmqXd1FIjJCc87cpI+xrX8tkLj/MjBb2zSGXh+2jicJFnmwQMbZrWHJpUZy40ZemYZPD+e3UJHA5ckkFR2HYDrTBNwrIiyiS3dJOvTcj59q1lLw9kRycpDKchh1X70zajwPb3MzzSjmMmxJ6ftWsOXvZzZODrRjDV9HmhZnSJgAf2HzTCENu3845b/Su9av4n8PI7WCZrXmEh3JHQgdqqDV+BpjcPOYuSNhsWGK7sedSPMy8aUCu4p0VRzSFSBt70si1aWNAY3xg5LMd/+KBrehSaa7vgkKexplW7AcejlPzXVGVnHKLRJ4tWW75g8yyL35hmn7SZ4oQsLFzbyZwuMj7A/wC1RC2XzxzKFR+hKnY/elUUlxpxDKHEbHDxHcH5FaRZA/6hprW0yvAQ8ezA+w7foavb+H7jcxXsulXLu4m5fLXOQANv3FUdp12uoWwjD5KkhWPUZ3xS/hq+m0PXrO9gYxhJlYlDuDncf3pTVoaN9nb7dq9TRw/qq6xpsM+V8xfS4B6HH9u9O4rmND1er1eoA9XDXmNczSYHq9Xq6KLA5XCO9DrhosAs7UEnNDeisGiwMZoaPQ5NEqhA6GjkBHamBYfADfzlFXraHNun2qiOAB/OGfer1s/+2THtW0CGKIj/AD0+9WToR/lJVaRnEyfcVZOgnMSU5ED8OlcY5r2a4ako5XCMV2vYzSAAwPKMdapXx98Tf/gHDV/cW8qfj/L8i1i6nzX/AD++FWrV4j1qHQNKmvJWHMCEiQ9Xc7AfvXzY8eePn4x4rn8u4aSK1PK7jYPJ0Ygew2ApFRRVmo3sl3PLLLIZJZGLsxOSzE70kUAAgsAB1Pz7VyMF2LMCoHU+1AnkRUJP1flXt9zQimFzzhRgY9l+KQu3mELnbuaDJKWfJO9dBAHMe3aqIDFwAOyig85k3C7Z60WC0hAwQopdCh5eUD0nvQASkLO2MU/6XZySSRRxoSO5Ubiu6fp6sTzbnr81Z/C/DwnZFTlXmAPMxxj4ArDLlUUdWDC5sK4f0GSRfLMRzKwX4Aq3eGuHeWUGP0xo3KGC+1E6PwxdgxvGBkNguoxyj4FWPoGgvYwBAzfqc15GbNfh7nHwqPo72CAxiPbC9NsU/wBtasVX0dfaiLXTygUkDIp6hjdFDb/tXKdyYUqMnKChz2+1DaMP2pVu3cChpDgbDOaaEN62fejfwgCE4O1ODRYOwxXCpKkZyKaAbvLUDB2x02pLdx/yWR0zH0yO1OcisD9Ow9qT8pfmBGAe3vTEQ+70eW+aQllAA9JB3qvONtJZVjK2vJKdvScqT8/ernlsIYiSpKu2+c5H2qE8U6fLPAc82GJxygDArfHKjnywUkZa4giidZS9uEfcAAdD8ZqrL6GSGQsBgKd1H98VdXF0UtnNMWkYnzMZ6ZqqNekaZuZcgEH7g16+CVo8DkRoaorlUKyKuMbNynY/pTra3okTyy2V7HqP1H/qmOxlDtySsvP9O4xmj3tpICRHsy5wR3FdSOSiQ2txNYXOZAvIdhINgw9jUhvTHPBHPFjDLh1Hc+9RSy1NbmBUmRGkTYp15hT5pskdxGYomYAnMfMeh9s07EjUvgPxG1xo6W1xMpMTCDl/MB+Un+oq7g4asb+FOs3GkcSiJGPLdoVBJx6hvv8A2rYWnXC3trFOhyHQN9qwkqZohRXQM13FexUgAYUCjGFBxSYHQOleNeFdxQBwGvGvYxXM0AcIzQCKMoBoAqIeHkWMeWP2rjeHkYG0Y/arPM8X+sUW9xEPzCujqjOyvdI4a/w6bZeXerBtTy26j2pue4ieYgFacoQDEKaVAGRnMyferK4f/wAtPtVaR7Sp9xVk6AcRIaTJJBXjXq4akZwUF35QR3oVM3EOpR6bp9xO0vlJEDzydkXGSf0GTSGZ2/in8QX0bQksbeUxTuW8pl+otjHXsRkn4rBc0rTvzMx26knJPzVl+NfH5404qJtZpf8AD7TmWFG2wWO5/UY3qq55PLXHU+/vSo0OTyM/pU45j09hTdcvyt8dAKHJNyoTnDnY0gkk5z16VRNnQ2+TQx62BOcDoPeigTSm3RsgnZTvQINhVsjAwKfNL02S7kUL0J6nt80326/iHMaxFj25epqz+DuFXuEhkeGTlP1OT6B8DHU1nkmoK2a4oOb0OvCXArXtxGeUMD/rbr84q+uGuC7a05JBGhIXry0Pgjg9NPtY5gq87oDkr0FWJbwxpGq8v2wK8PkZ3OVI+i43HUFY3WtggQLyAY6AU+WlpykdBtsKUWuncwBA2p2j004Bxls1zrZ1toDa25YjOKclt84GM16KDyzvsBSlZQRkEbVSSIthC2fNv2HXagvCVbrt2pfz7DGBmvBcjJ6mqoLEcSc/3HvRbxHnIANOaxKCGJH6UDyyzAjcDrRQWNYhY7Y79aJktsg9V3zmniWMqRhetEPGG7ZHcU+odhhnR1GPq/3pg1eFCuHHpIxj2qY3EIUZxgE9KZNTgBLsWPLjaqSoluzLXidpbwu86Ns5yu221UZeoSZeYDY961v4hcOtPC7qgKO2eU9qy/xHp5sbyVWUIjbftXp8aWqPH5mOnZDHiQyZXAftilAl/lo5BB6NjtjoaQzzeTO3OpIU/UPajvMMa8yMCrbjNeieUHTRc0hkjJ58jPx8046RqASUsy4zs6/I70287FlZDnsQOo+1elPlzLMh9L7MPY0AmWLp94bXUYruCTkyVlAz+YHtWz+AtWXVdHtrpAV85CCPYg5H9Kwtpsn4iy5Qw54/p9x7fvWpfBLXBLpVnCoYRvFzt7B12O/sQQazmUi9hvXt68mCoNcJrNjPE0E12uGkB4daFmgV3NAHmNBJzXTQaAPV416vUAZlHi1kf5v9a8fFUyekS/1qjo1zS+2gya1bYqRoXhTiw6rNtJkk1cNkc26nuazd4ZxeXcL9xWkLE/8ASpVxdohihDiVfvViaAf5KVXKn+Yv3qxtA/ykoZKJBmvE1yvd8VJVHGIVSSegJ/Ssy/xM+Iz6Pwq9raSgLK/lsrNy+cx3I9yAMVoTXtTh03Trq5uHCwxIWfPdQMkf2/evmf438cScY8VSyMSFiJ5kJ2V87gDsBsKljSKxuZsc8rEPM5yTTZK2MknLUbNNvk/t7UhdiATgl/7U0U2Ezkk7CkxJHt9jQ5ZCMk5yaUWml3l9H5saHkH5jQ3Xokm3SEyZLHal1qzL0Xb53pK0RiYxOMOp3JpZahXZVyUBO5G5NFi+SUaBa+a4GfqPLhB1+M1pfgPhvyoLZnibljUYB6Z+1VV4Y8NfjrmIhAQhLe+9ad0y0FrEiFcBQK8jnZ3fVHvfTuPUe7HuzXli5VHbYU9W6LyAFsZ7U3WZVFJfp1FI9S4gd28iytwV6NIfevNim2em3RNDf2lnEvPKo2336V234gspJQouVA7EGqyuNJv7+PzPxIVB2xnH71H9S0nUbGVZLWZJmP5nJ2rpjBP5MXKi/lv43yVkBJ71wS5YnbHxWc14u1vSXAukcsDsVfINTzhvxPtbyMRXJKzAdCMUSxtDjkTLUW5VWCk570cJmJ5Qf0qMWmp2946PFJkGnuN1XL8+2N87VF/Bpod0Lcue1Bhn5Wx2HWiILpQD6sg9KRNOWmbBxTboVWPRmD/aieVT0HU0UpIjUjfI70ZAC2M1cdkOkAkjz2yKary12GF6HNSMW45Tmkdxbcyn2qnEzTKq4vsfxMLoo9Wevt7VmXxA0kfzsQqJFOSepx2OP3rZGraTFeKyOWHttuKo/wAR+FHt45neMPCpHLLy5zn+tbYJdZGHIh2iY/1O1xJ9PbqOlNyO9upO4UbYPcfapfxBbixvpFKhVfOPaovJEspwuTnbBr2ou0eBNUwr8RKo8yI5BHbY0ZHceY6q2/MOh9xSRlaJTyPsOnsa7GwchwRkbnfpTJJTosqiTCkqCo2Per08GNWaxvZ7LzAu5liBOM464/Ss/wCnzm3u0IAw39Ks/gifl162RZY0mdSIyc9QMr+hxj9amRUTckEokiDg5GAc++Rmhk0x8J3/AOP4c0ufOTJAob4YbEf0p6znesBgq9XAa7QB6vYzXqFjFIDhFBxQ64RSsAOK5ihV4naiwPn9DAdtqdbaLBGaKgjGOlL4U+K1AsTw7AWdfuK0HZf9stZ98P15Zx960HY/9sn2rSJnIOX61+9WPoH+SgquV+tfvVicPn+Un2pyJRITQXYKpY9FGT8UIimrW5JBbLbw/wCdcNybn6V/Mf2qGUUZ/EP4iDhjhciGRTeX0h8vJzhU3LAe3Nj9q+eGqX0uoXc008hklmdpJHPUknJrQX8T3G9trfF1zZWcpMNjF+Hj5F2K824z81myeTys9CzHJx2oRa0gm4n5m5F/U0hmfLYzRrsd27mk53fP6UxHFJPp6hjirMdX0zSZXtyEigQDHL1OKrm2TzLy3X3kUf1qyuIG5dHvoASGM6J+lc+b+SR18bUZSKvMjtKzOOYscn71JeEtIl1jUlRVJwMLtsDTdHbrzMGQk5/atB+BfC9vJcW0zKnmseZsjmIHtnoPsKvNNY4tmWDG8uRIt/w64ITRNItFKDzuXJb5NTl7f8PCvOcstONhEFhwvbau6hYSXFuzGM/BBxXzWSblJs+pxw6xoiF9dSNKQ0hRB7Ntimi44itdKidnlAAO7MaQ8Stc2hljw6sdgzDY1THHEly4R5mJQbKu/KPcn3rbDj7urIzT6Ky4pvGPTbeEpG7zOD9UaEj9+lIP/wBS7KcPLHHcCIttnBxn9arG74DU8AXWvpftc3MQHIqH0rk4z+mar21t0t7xrZpLt5XUFZ+Y8sbA7kAbbjbevQjw4P5PNlzpxfhpFOItP1RjFzJ5jf8A1vsf2NdGnQp6sNGd8H2qttL4Q1684b1DWrWQalp1nP5ZHLiTAAJIPuKXaTxpcPZ/hXZp1XZHP1Y9m+ayy8dw/izfDyY5P5IuThjVZ7S5Kly0XLsfmpLx5oV/x5wZLpNhftZTSOriTfDYP0tjfBqt/DW+/wAavzA/M3KfpNaW07RIorZAo3AzgVyLspnenBwIzwBwzc8IcH2Gm3l497NbxkPMxPU5OBnfAoi819NNLyyHIJ6CppfxmO1ZQMYFUhxbqNpazPE8x5gT6V3xTm7YR8ZLZvFPTIRjnZcd26VyDxWsPNOJAV9welVPPfabIhPJuRsWA2ruk2Om3bHndwOwz/vWkWvkwkpPwvFfECNVSVW54WO5XtUq0zWbfVogUdQzDIGeo96q3Q9I05/L8tWDY5cltjUkTQptPZLqGVkMTcyqDmqTT8ZMk16Sa9gKuRjrUN4w0hNT0qWMkjCnpUsi1VNQgJBAlUbim++TMLKRkEVDdDjvTMGeIekfhLu7jcHMbgK2Oh+fuP7VVdxzoSPy5+oHpWg/GjSzFq0o3AfIVs4IPaqBunETHKqZGBBJH9K9rjT740zwOXj6ZGJzcSMhGCR3x1+4oiAgSZBOD7jBri3boTjb4AoEbiWbIBDH2O1dByj7asGiUZwwOVY9sdRU00G/aK7tJFIBDgE5+ncYNQSzk8qRX2blYHH96k2lS8krRnHXIPsPakxo3H4WamlzoslsPMzHIXHmdcMM/wBwasEDYfaqR8H9VElvFIJC/o9RxjKnHLt8EHertR+ZFPwKwZQOvV6vUAerooOa9mpA6TvXgcb0GvNkigaPM++1FsS3zXgCdhRyx43JpCMKxLg0uhXLDFJ4l26Uvto8Gt6AnvAK4uF+9X9Yj/pU+1UJwJtcj71flgc2qVcTOQoQepfvVg8PH+WtV+o9Q+9T/h7/AC1+abJRJCQFyar3xL4kg4b0rULyWUqYLVpJGB+iNRkgfLHAqftIFJLEBQM5zWQf4pOLAeH47WJ1VNZfnZlOGaBDsPgHH65qGXH0x/xZq7apeyXL85nuGaWTm7MxzgfAGBUPnOXb4pyvrhpJXbJyT3PSmvq57gmhFSCpdqII3zR0xOcexovpTJCvMMcgZThlIINWXrk66poljPGcm+VWcA7qy1WjDep9wjD/AIrpMNvgs0EjgAdcEZH9qyypakdPHfsf2JtM0skj8QA5fZPWevvgda1Z4O6ZDZ2IKFmK4AcjBz747Vnn/D3t7uBEY5zkuFKn/itS+G9j+E0a3JIAK5Pua8/mZG4HpcHElMs2yVcog6g09PZeYgDH0036TAFcOR196kScrHc7V457VaInrGg2NzbMjwqzEbMRvVIcbcEn/OhTzFXZkPUj3FahFks64znPuKj2r8EnUFO6gf8A4g1vjk47RjOKkqZkGDQLzTvMj0u6e2iuAVnt33hkXvlD/tTXBwNf28o8qUmHnwwGNlx1yd60fqfhvqNmzPB5E8Z6KVxio/LoGswOY1sIgD1INd0OS6OKXEi36RK34m4m0zhxOHdG4csbewAI803DFmzuWPyahS2VzDqSXd5psFu7SH8RyXHMJFxjZcbEdc1cH/xbWLnblCA7cqUusPCtZJUmviJHQ7R52z7n3pz5KrY4cVrURF4O8NXP+IXOp8hSGQ+jIwce9aa0qzxEQ7MDgb1C9BsU0mOOIIOoBHSrFtkDQMVYjOAAK5Mf5SbZ1ZPwikR3jS5XTNDu7kHLRxkj9qxvxnd3cBZ2nH4iUc2PqOT8Dc1szi/Tm1HSZbZl/wA1Cv8ASsi8WaVbaXqF3cCae2vnHkyMcFSB0GD06VtBXLZlJ1HRV2paZxFpWiy67fLI1qzrGgnkIZyemFXYU36fxVrtjK7xxOnIivyLOGJy2Nl6k1PNYm17XuGJtJuVtbqFZFkhkA5JEZTkEjow7bVFrbha6s7mK5utLlincbTpIOQfJ7gV3wUGqaPLyvInaZPeD/GG7thFHqCMwzy8zryEkdq0Pwvx/p/ENmEjkzKBhkbqKpnXr3gC18NE0m8vjqutMpkaW1gbnEp7qcbY6fNVl4Wavq0Wsxx8kyvbN6RIOUyxk7g/I61jn48UnKGjfByJyqMzZ1lYiG7MsZ/lSDcCld6VjjPMepx9qatF1JbyOMow6DOT0p4u7dZIGKgknqcda4bO9aZkP+Ie6W2v4JF9Q5sECsxahI/nylWyqsQR7Vrrx/0OJYIp5slYyW2XJ+BWPrxgLiVlcsSx5sjFevw3/jPE+of7ApJQ2S6AE9CKMgVuYEYx7ikjexyaOgmMP09zXWcA72YyGzsB1B/vUisJsvE7Hc7Z+RUZs5QZcN0Psae7E4TqME5BPYimNGmfCDW3e1EaHmeKAwiPpsDzKfv1rTNmea3iYZwyA7nONqxv4PaqLTVMSyFEjKsV25SDsc/oa19ojMdLtw5UuqDOD1B6f0xWEvS2OQNdoNdG1IRw16vV6pbA9XRXKKnn8pCcb0hh2Qu/Sk818kINNb3byNgE15raWdSBmpsRjyDcU5QDGKQQLtThEK6hE54G/wC5/Wr508j8Mm/aqG4H2uV+9XvYf9stXHwhi1T6hvVgcPf5C1XqfUPvVg8PHFup+KJEoWcS3P4XRL6QYB8spknA3G9fO3+ILiUaxxbfRxOjWmnRpaxKwxhgoU8o+MGty+KWpCw4elDjmiRTMQTjmKgsB+pFfNXxIvnl1W5MjQtPJI0sjRNnLHtn4rI0iiCzNnJG1JQMEfvR8pLKMjc9KIfZTjrVgwmRtx7nrQMenrRjLzdtxXHHpxQITuMYPWrN8J4xNHqxxzNEqOFHXG4qsidx81LvDrU7jTuICIcFJ4yjqehFZZlcHRtx5JZFZZdmElvJXCsXwUyfy56YrSnB8mNKslA9SgbVSV1osVlqVoqHDTJsB3GxzV38JFU8iI78qivF5ErikfQ8WP52WZpL+jGDlQM5Gxp8Cc3KV2+KY9PmXZQcin+3kGAMfNcaR6jWhdDHgAA05RRqFILfpTdFMAcGjWuQMerLGuiFI55xbFM0EDE+kEH3puvLCAxZMScw7gZ3o5pyQQAMimzUNSNtGWcjA9qptErG7EE34azKhsKze3vXbZkdsEq+T2FVbxDrOoa/rYsNJ5nkHqbl6KPc1MeGLHUbAxJfsS56kGud2dP2lFWSyO3864UjoDUytYfKVQScYpp0u1Vk8zA2waexL6xmurFGlZwZpdtCTU2DSICPSBVKeIPhnHxDeyTxqRz9cdD96u+6hErB2OxpqufJVuQvhgf3q5OnZMFqjKI4N1HhiZoigmiU7Ryf7Gnyx1HSwCt7btbuRg8y7GtA3uiwagAWiUn5FMUvBFnJjmiUnv6etS5/KNFBNUyp7W30Ce4YW727O5z6lGc072fBVnNMJRbq3qDBkGN6sm34D0+HDLbIrZzkKKfINKitQqKoX2GKHmm1RH2oJ2kRvS9IhtlVRGuD3xvT5Ha+WhG/KaVCz5GyF/WhSelduh2qEgkzOP8AEFpDS6V53OqgEgA/m23HztWEdWs5Le9ljcr6WwCDsR2xX0F8fblBo0UBK/zJ1XmP5TjY/vWEb7T5LvXZLdUy/OSwByNj2r1eG6x2ePz43kQzanpsunNGzj0yKCMikqbgZqW8aNJ+F06OUfzsMc46r0FRAZ5h7V1RdqzhyRUZUhwtW5JVIp5tJDGWRckN6l7jNMluAJB8U528gSMc30qdzVkItDw+v4/8SVXUKWUFQRkEgg4Pwa23wrcm70iyn9GZY1UlOmQMD+1YB4Vlkh1K3dGXaQFcnqK3Z4fXa3XDaNCysBINh2PxWUiyZnGPmg13NcqRHq9Xq9UgeomWHzARR3eu4pMBJDYoh5jgmlQAXoMV6vUhmKIOlL4xtSO3U4pxhWulEsmXA4P4lfvV72A/6ZPtVGcFALcCr007/tlq0QxWoGRU80F8QKPsKgYODvU54dZREhbpkGh+EorLx8u7uWOOxtfLEMFv+JuS+2BzqEGfbIOa+cnENwl3f3MsQPlmViMnO2a3Z/ENOg0zie4ZnFytoO+3L1AP7isEzgvNGHC8qnBK996y+TVDfKpV8Hqo/rRLjJAo+XPqk/1MSPtmilXIye+1WJnIwFySP+aLmAGTR5XotFS7x52oEISPV9qe+E71bDiCykcfy2bkb9dqaCh2+acdECf41pnmEBRcR5J6Y5hUyWmVB1JGodI06S71Cy52JYR9D2A6f0q29BtjBdRkHBUYIqAcPRN/8hdSRyqnpA9qtWxtyHDjYAV89nls+p40a2S20Tk5GDbY3xT9a3C433NRi2LLGMtt/enG3uM4BHWudHoraJClyG7CgtIyq3Q59qb/ADhjY4xtXTMx26itExUHzXBCZzv3qCcV628cDxoxye1P+p3ot4nZiQAKrnULmXUJpHGfLGwJ70N2XFVslnh1b21npnnnlN3dMZJXPXrsPtU3eaOZsgqM9cVSMGr3fC9upkjaSF8leU7r/wAU6aJxwuoXS+XIyMf/AK5Nv2pMUo3svfTL4RqUU5Vhg09I4OCMVX2m6pzwqQwyRnFSCz1Blfds5+a6MU7VM4cuH5Q7ajcFSiruD3FV3x1c3WnTWN2mRA8oRyO1Tie8WZ1yAoAqM+I1/aS8J3oULzxqrKc/mBGKvIriTgVSWh40rURcW0ZLA7DcdaeliRlB2zVY8I6i5t4MsSGGcVPra7DLkYyTWGOd+nTnxdXaHQqBjHTvRU8GSGX9KCJw69cGjUyd63pM5WmvRKASeVhtSO7dUDr0GOtL7hSuWHemfUnCRsT0xjepaoK+TP3ja8N7G1rIQR5bSDO2DkAb1mPT9JddWnnQeY/LyqzJjc9Nu5+a0H4j3K6xrtysHKwhHlkHdXXG6kfeqN424mt+FNAa2tIlTVr8sqHqYohsW/XoK7MLfXpE8/kKKn9yXiKx4+1CO8154YW5oLNBACOhI6/1qMrQJDzliSSTvk12PcCvSjHqkjxpz7ychZAwDqcZB2Ipwt8tgbYY4/WmuLZ1z7042y8zMgO/YUyCS8OzLFfQiQhAsgxnou/Q1tPwOuQOGJIiTgSEqSckA5K/2IrEWluq3MU0meXIyR7jqMVrPwLvxDLdWYDmOQq6M+xI6/2JrORp8Ggwcqp9xXaBCf5S/ah1Ij1cFdNcFSB3OK9zV6vUmB7Oa6BXBsa47hRkn5pDMYwDal8I3pHBsKXw9a6BMmPB210KvTTR/wBMtUVwhtdCrz01j+FWriZyFhqY6HJixMgzkbj4qFM1TXh9BJZiI/m61UiUZw/iPnX8FxQcgySm2haEn6Aq8xP67Vie8UxPKpXldM82euT8Vt/+IyyiudI1gLgT3OrW4JQ+pl8kAg/qKxPrsanUrwpzCPnbHMcnAO2fmsfk2XgySgegLn5zRqqFCgjcHJrrJ6UY9SuaCinkZz0wcVZIEoQzE0C4jAt9iOtLDGPSG/Nigzw88Em/q32oENuPpB9q84ICsuQRvtQm2UEjfODXGJchchSWAy3Qb0MDTPgrxHdaxam7v/LMoBgRh1YJgZP71onRyZ4Hasv8Caxo1nxjY8OaTcNdW+macYXu9glzKX52dV6gerG+/prUnDDc9qNhnFeDzIdZn0vAyOUPR2XKx4NChkYMDnahvGev9q5EvIOUdjmuI9WMhZGxPU4HtRk9wsEYbP70mJLLgdaa9UkkKcv+o4+1NA2M2u6s93N5IOIs+pvf4odhpZuiFTBjzkn2FMUt0LnVvIiX+TD6Sfc1PdKMGn2w8x0UNgksQKAc34hu1rhtJ7VdhzRjYVA7nTBYyBxDkg5BUdKt2TVbAqea7txn3kFR6/s7SS45raeCZG35FcEg06/QR7fKGrROIkRR50nIyjB5v71LLLXjcLm2LSH46VHJIYSHjNmPMbYemnvh7SZYV8zywq9q0gnZGSWtifUr3iO5lUQTKkQO/wD/AMpp4khv57IJdSnC+rlXYEirHissLlhnHxTHxJYCWCTlGDitZx0RiyK6oYOF9QEcUS7nap/ZXYLY6bZFVXpANldiFtupGe4qd6fc+tcge9csdM7clSVol8EodiAfvTgkxIxTFb3IBBUde1OUUnMmc4rqizhmhVI/KrHO+NhUV4xvBZaRcTEjCKTt70+GUDJJyKrLxG1NpLT8LHkqxycd6r0ylpFH3msLaWWrai0LNFCrSHAznY71krX9TuNe1Ge/uSxdzsCdlXsK0V46+Iun2PDn/wAd0lB+IvxyyyAYwg6/1rL7sfSvtXpcSFR7M8H6hluSgn4Bxvihxr0+TQcknHWj4kAANdh553p+9LVJV1ZTuKS8uQMDvShAW2Hfp96AHyzXKKeUEc2c56GtL+Al26zRKxd/N54tznkZVyD+2f2rMtipwvIQCpJ39u9aM8EZUkd5owA8IgYZb83Nytj7g1nI0RqyH/LXejc0RAAFAHQDFGmoEdzXqDXqQA814GgUJe9JgCJwKjmva0tpGwzg08X10IIWOcVUHGOsGRmjV+tZZJ9UTKXVFPRLS+Ebg0jjG1L4a60ymSvhTa5Wrw0s5tV+1UhwpgXYzV36WD+FXFaRIkKyMiptw4SIecAgqMAfNQnOKmmgHmjTB2I3pyIRQPjrH5kxjQhbpb1mSMDLOwQODjuAAaxDqYa6uJ5S6s8oMrAbYJO4xW+/Gmyuv/keiXIdEtp7mZSDjKsYWVGz7npisI6lbmOaZzjm5mXIG33rL5NkRtjiJ1x3wPijYV54Gx7D+9clQAOpH00ssowYVBG252+KsVAbuEwhXxnGG+BvXZkwSqjlyTnvtSu4U+TzMchgAw999xSeeMGLI75/TalYUMWN5N985pXoiWUms2K6mzpYeYpmaP6gue3zSRNuRiO/LipPwlHokGoLfardD/plaWO2MHmLK4PpR87BTn9MUN6EtsdLa60fhnxNS90e6nfTXunEbTqFkMTH0lgOhravBeoLPbqwOcivnrr9pDp+r3EdtcxTxxykK8T8y7Hse49jWx/BbiVdY4Z0+fmHmFORwOzLtXmc/HcVM9j6ZkSk4F6c3Ngg7VxVKsc0ls5S69aUM5yd68iz3hSi53HWmvWpBbxF2GdjThG2c9vamPiScm2KKPUdvtTQn+igeLLvX7aaSfSG9UXM7Jk771HdI4t1HV5HTUJZYGCglpXJQn2Bq+rbQ4mOXUOz7HPtTNqXh/Y2M0lxHbiVG35ey/pXTGcK60Xx4PtqVES0QXGoaeL23VLiLcEq4yMfejJ4NTs5RJJHPbjqCQQP3FSXTOHtBuFkia4ksZwPS0I2J+RT9JdalYWwV3tNSg+hWB5XO22R3q1GPwehJ8mHiUv/AAYdF4u1O2hAFxkIckthql2meKN9bEJcwRzxZ7AA0yGbS54FjuNAmWVRhvJAwT+hpnj0m1DzONL1FAWJjw42HbvVqFeMzc4zX+TEy79I430zVFxz+RMfySGluo3EBt3lYryY652rOmtf4hbWkUltDMjAkOJWG3tjFRzTNZ8UdUtbiGM2qaYh9TspO3spNDV+nBnxRj+UU0XBqWq29xIJbfBe2f1AdlPWpjpMiyop7kVSvDtneJe3wmdn86MA496vTRrIRWkCnqqjeuKSqRUJ/hY72o5RkdaXLM3INqJSLlVTjcUbEhIxg1qjGUzpf0knODVQ+I1/DD57vMYooPXI+ccqgbnNW1dMLeCWWRtlBNZH/iG40trbgu9tYp1a+1a6Ecag7iNfqP2rowwcpJHHyMijFszHxtxE3FHEV1fD/t8+XAp/LGDt+/X9ajjA0IHJO2K512r2kqVI+alJydsGq5FHwrmM+xoEa4jOc70cicqqDkE0xBsanyy3tRsS8pB7gZB+aBv5HKOuaNCgvGoG2N6BodbXAaPl2ya0L4KQvELLyU5mncgkdPTIu9UBpkEk0qoNlYg/oTitOeC1mYW0vuiRyuCNgGJ2Hz2rORovDScGFj/U0Mt7UUo5FA9hiu5+agkHmvZoOa7mkB3Ne5gOtBJFFTyckbGkwI7xNqHlwsAe1UxqUz3N42N96sHi+8PIwBqF2diZX5j3ryuXmp0cuWTbogUS7UtiGKSxDalsY26V7KOok/Cx/wCsX9KvDTNrVTVHcL/92KvDS/8AtVz0xW0SJCsH7VM+HyHgQD8wx+lQryxkksBv0qWaLOtvAZHZVjRd3OwUd6cvCEVp46XE8Oj200IU3Vvcq6hlBUMDjmPxyn+tYc4rIQmNV5FdufA37nf+tbH8ZdcjhtL5p4+d2txJGjsCFBYHGB3O32FYl1q5aeWWXGcMcgdFBP8Aasfk3j4NSwcl1CGAw4wc96OsnUl0wF5X/Ye1JLqYSiEt1x27UTA7JcBs7dPvVoGL5S80JO4ZZGOPffauGYC3k5lOe36UEOcSqSQV3/WhXHqtH5hsq5LfehCYzNEPwznO/PkfaphwTrg0G+EsGgWOpzT6fPCUurRpQuVOZAAfqA6N2xUQkJ8llHTl2p14OueHIddjXiyfVo9JCMGbTCvnA8p5QM7Yz1+KGShhvXjnmUCA24KjA3wduu/v1q2fADi8aXqzaRJIVjn/AJiEnbm7j9qqLUJofPb8LcTyxZ2Mo3wOma9pGoz6bqdreQHEsMgYdqzywWSDibYMrx5FI+kel3oaNDnNOzXCknFVdwHxGus6Pa3KnPmKCR7Gp3DcZQZr5qcXGVM+txzU0pIevxHKgIO9NkiG6mwTnG/ShiVWGAeu1OGlWwZw39TUoqwmDTwoJ5ftSW6DR8wHQ1MjaKY84/Smm+0kyrzqOUjtQNNFdalpEd1KJVCrKOuNs0j/AMJkAwiuCN8oal1/pxiwzBgfik1tbvHKrjOfvW0ZM7cfJlFUhm04X1u5GGPMOU5HWpjZ2OqXEYaOGJB/qahQ2MsjKQ2CR0p907T7lW9T5FbRytGeXl9l4R9uBnv5+fUZEkjzkpH0p6udIt7ax/DxRKkKLsqjAqRrAVQhs/FNupAtGyr3GKcpNnBPLLJpvRWFhYqdYIUejParU0+3IgU4yMVE9PsRHes2Ns9cVN7VgkQH9q5l/IueopIVrGGAx7dDRqxcg60XCwXfP7125uVRTzYANbROZuiufGPjKDg7gzUb6RhzKhCrnBYntWBfFiQNrMFpyyFoUNwJnbmEiTcsiYHYBdqtb+J/jiTjLiWPhbS5eeKzJMuDhWbHSqe8Q9ZivrvSLOSFRqOlWKWV7dAFfxEinYEHpyKQmR1xmvW42LrTfp4vNy920vEQc+kmhRZdgAK66N7Zz3HSl9jBg8xXIAyf/VdqPOOGM/SOg2zQo05pjk/StHSAIMAdsmj7SEBeYjqObp2pgFrF6yp6Af1rsSAszY6DFG42YIDknZu5NHRwY5lxnJH/ADUMpDtoiGSUBgw5iqDHuK1z4S6WVu43KKscFuBGCN9yAP7E/rWb+BdAbUdbs4c4kX1++5/4rX3h1bHlvb4ghGcQRgjGVXbP2rNst+E7JzmuVwmuVLJB5r2aBXs4pACJ3oi6OYGo3OaDIvMhFJjKl4xZll7kURoEBuWU4OKf+KdN89yAuc96VcNaR5cS7b/avJyceWTNvw5uj72UPGu3SlkYxiksRyOtKoztXto6CScLjN4tXdpakWy5NUlwwcXq+1XXp7iO1Xvt2rSJEhY84RmOF5h0zRsmpW8VnHbuVkllJY8xwiqBlic9gKZL/U4LcOXkUYH5jVWcT8WyXdrdQwkW0N4Gj/FSvh3iA/KvZSe57U5sUVZEvFbi+K7W9a0mgaS8YL5aDPkRKdtz+Zsdu1Zy1Iln5vcn1VOuJ9Tje2SO1TljwR5z7mXfdvioJO6+WV5A3bmz3rFI3rQ1cxkZU3Zs9qFEf56MRn3HtXlRmYrGuObqw/tSqaFbOJyc8zDYe1WSAhPPIzbnOc/A70ZezclvLgn1jGD/AEouzBSMF9gwPMR1xSO+kMg5R7836e1NCYG3YSBixyBgj+1N99EVlI/rSq3baQDuP2NF3B82Yk9etMkbwu+MUZGAsi/ejGXDZHtQcHmDd85pMF6aC8JuJZLG2jh5zyZ6ZrQWn6p+IRGVuu5zWUuBSViVgfSxwPvV5cP6k5hWPmAdd9+4rweVFd2fScKb6pMtO1vAuMkVLNKnVkQ5FVOmosqdTzVK+HtaWQBGbDD3rkSO1uy2IAJF6ds0ZhB1H6EUyWeoHyeZSGYUtN4kgDb5NUhqLDbmxhuQcKAT7Cms6JHzZKgEdhTsLgCMHOM0bC0chHetotDtobbTTBzcuThTtT3b2TR4JOaEiKCOXbeleegO4rRJGM5NiSZSB8Uing5tyBjvT3LGrjOKab1xGSCfsKmSM4vdEeEBhuCRginS0lDdOlEtyncdTQwQi7DfFYJbN5O0OCzKqnOP1qlfH/xWTw/4bkML51G6Bit4x1zj6v0qX8a8a2fCei3Go3kojht0LHJ3PwK+ePiFx/feInEl1ql5IxiJ5YIT9McfYfevQ42Du7fh5vM5H2o9V6xq0fVzLxJbahqLyOFuFuLiTJ5mUMC39M7U7+JZd+PNeldjJ5128yTyLhpUf1I+Om6kUxaFpd1fX0Ygt3mhZhHIFHVSd1HzinjjzTptG4r1O1kF08Ucpjt5LlWVvKXZAc+y4H6V6qSTPDbbVMjKIWYljsKdrdP5KjGx602BcSIndiM08lfMKxjIUepiPbsKtEHorQz8pc+hmzgew7UsmTB8sHHNufhaXwxBeVeXAYk0hvizBsnDSdTjotUxgbfBkMSnY70ttUBlkdcelhgEdsdf3pvTlSAshBdTjA6mn/h60e9u47WJjiR1517suev6VnIpFveCmgrNJLf3COYkfmLnp03/APX61qXRbM2WmRRsAJD62A7E74/Sq24B0CLTtOs7JBlYwbmfPUEn0qf71ayEsFXsOp96x+SmDr1erhOKGSdrhr2dq4W+aQHM14tQM16kA2XlmJ5CSM0qsrdYEwBSgrmhqBiprYGUIelL4Vz96SRJgbj9KUGZYYi+CcHoBW6AkGhzCC7XIO9Wta63bWNiZrm5jiQLnmbYD9TVEpxRbabMgLuJWGwA3JqN8T8bXk0yre3UN0FJ5LdclIz25sbMfiqUqDpZZvGfiH+PjaCyukg01WBluSoLzHsqg9qrDVNXF/byGSYmKRxzeYcvMB/ZRUafiAXsplZC0p2BkxhPkKO9Jrz8TdRqJL1PKH0p0xUSlZahQ28QXL6zdLKkMSoi8qqD6Ao6ADtTNDZJ5yq5JJJJVfUSfipD+AtQS08rOcbCIgUmuJBEDHaRoiEYLnqf1plCGW2is1Z9jIfoB6L8/emgWxndpZCRApz6vzU7lVjGWIeQ7LzdB8gUz6neIo5FPO+NyTVURJhF9cAQNyDZzhc9T7mmq4IMmxIIUUe7M7knfkAHXvRTDncnH0j96og7bg8xz7UU20oJ+1KLcZhdydsgDNEXBCycuNgP3pCYU6+3agFSaPx5iA4xXuXfGNh1oEWl4bot1beUevUH2PvVmwM8EoHNyyJsQKqfw7mMDgj6ebFXcbJb9Y54zhwuD814nJ1Nn0HF/wBaHXTbz8QOVvqp3tJXgl517VFbcSWsoblIx1FSS0uFlAAG5rjej0IO1sneia7z+gNnIwR7VKYLvYLzZJ6VV0AeFxJCQG/vUi0vWgzJ5/8ALZT371Nm0WWDaTFgwftSpZljwQeneo/FqETDKuCDvs1GfjEcYycferTCiVW17zvyjpTisi92qFxaisf58UdJxFDaw7vzN7AVqpGU4krn1BEDerAUVFr3UfxFw2DkdsUzz6tc6mwEa8kQ656muuWii2ODUykQo0OiXPKuScUj1HXYbCCSaSQKsY5mY9ABTRPerEjSSSEBR71SXi1xu50S/SBitukZBbP1GqxQ7SRGbJ0jZR/jf4sXPiHr0lrbs0Wj2TskSBj/ADD3Y1U/LgAL1rmSxLE5Zjk0KvoIRUI9UfL5MjnJykW/4XeKs3A+s2NxcaYmoQ20KqkcOI3VQrALnlOQS2TkZNGeJnHScYXIW70ZLW+a1jiuZJYyjfiUz61H5coQCvTbOKhPB+oaNdazax8T6nqdppxKRSy2EavIIh2AJGTXuOtT0ybXbmLh7WdY1LSBO0kcmqIElY9OZgCd8bU0hSYw2Sh71ebfG9SC2i55D09Tf0Api08H8UwI9QzUksUKIZD2GBnpkmqRIsg/myrndQrAY+e9N05Ms5BwAq5PtmnrS4QTEpACqMZ7nPSmm8YL+MVuqueUd81TCxHbIZJQq5wBkVZPh5oj3dzNdKAnlqBk7bnsKguhxiRUY5wCSxq6uCrIC3QJnMrAEZwAe39KzktFxZoTw7tJf/j4muSBPO4ZvlcbD9qm59IGOlMWkxrDp9q0eN0GVUbftTyHVhk9D03rEbB82RXMigjagknNIQImgk4rma41AHebevc1AJr2aQA+ahBqK5q9mkBl5GydiSBTZruqrp9nIwHq7DO2asnV+Ff8Kh2C5YZJIrO/iVqrrqEtrG3LHEctzek5+1bNUNbGW+1y8e4PlyksNjgZxXbfUFVT5KzF8bMxHpb3x3qPrdhoi6SSLjAYBe9HpE0gAEe2M8x/vRRdjqIxOfMllBlJzy560ojGJSwErEjopyDTREsqnKgAL3IpfZ3LWpyJQr+43JooLHGScQx8zoF7HC7/AL02SX0jrywowU5PMx6ijZpRPNiQjC/lzzGi7mCWdHKbJ3zsTWiRm2R++vGT0q3/AO73/wCKQR88zsx7bkDpTo1hnLEhse+MUTLC4PKqgE9N/wC9AqELsFBROmd29zXYkOeQfUw6+1KrWwknf0KcDq2On2odyIrFWQNzS59Tf7UhiaVkUrEg9KdT7mkEh5pW9htSgc3Llscx3NIpTjl5enemSxTBgxhfY7UPlIBONgaJhPqGOhpY8RNsHBG74wT1oBEz4Fcx3MP+guARWhtGhDRLyMeWs4cETgahEjHAV81o/hmRZbddsEjNeJzl+R7/AAHcRyvtOJAljXO3qpBBI0T5XbHapjZjzI+UjI6URf8ADZlHmW+Aw3we9ecpHpKI32t+2wp3jljlGD3qPFHtmMUiFXHuKPjmIOQTSNUSOBSrHf0n2pxiixgiR9/Y1H7W6JGGJHzTrb3m2Mg/elbGPKW4Ybu5+7UdBbopy2Cablvcd6H+N2OcVabIaHlZFj3U4pPLqARTzH+tNUmoIiHJAx80yXeoPcsY4hlT3rVbMnoI4l1OS9VoIGwW647Cs7+NOp/htIFmhGHYKfnua0DeWgsbV5pTu42U9qyp4zX/AOK1eGIHKplyK7eJ+U0edzZdcbZWijGKGBzUFSPTRqACQDtXsngBZj614JhaPdeXNAbY4oAWaeSXJLerl2NSKByLaRTvlAf1FRe2fkkUjt/an+1kAWME4GSn+4poaH+2l9Mcg2DKBtTLrIaVDIm5d8//ALhtTlZv5cDoxHNE2CPg03vLHeQy20gVJAcg579j9qbYxTpMiwQKxKjncHlP+kdR+9XPwJqcCSRATLmNSMY237H+1UAxlhjWM7cpIO+cfOamPCGvmOaMO5Cg8pI25h7ZqHIqKNocL60uo2UCK3K8RI9yR7Z+KlNv50a+twfY8tZ34R4mawYXcc4ubTpLGD64fZiO/wBxVw6Vxja3kfOI3khbYvH6sH9OorB+lSiS8uWI5iQ3sa7SW1vIZkJikEidcdwKUBwRkHY96CARoNdzQScUAdNBrua5SA7ivOcKTXs0TdvyQOfikBSvjZx9Bw/paLC//VS80fKBgAEdfn71kW7uxq17JPOXZpGB5j0Uf71OONb7VeM9b/GyRFLdByoJTgAfaobccKXb3TCK5AixkKwwftXQ9jWhVB+FgkEssZlUqTHGMAfdqENVnktlgab0E8/IigAe1IZdHurcLiQtjqo2OKJEBQD1MuDtzdcGkOxQJQ8zKzOpHTI60B28tvW3p+M703vfyc7RyMWAP7D4oPnEtzEZA6AnYU6FY92MiIwCKuAclsE/vTw8cc6lHkSVhvgE4+2Kicd+4OAoP26CnCxmurp1Co774wuwP607FoezYCTdhECBtysRy0knttOs0ZpWWTAyew/ruaV3dvc29sPNmSJjuQDvUcNt+MmYDzbhzudsD9TTADday0sXk2cYVDtlabCOQ5kPM5PQdKcrpFtzyswBH5V6Cmtjks/7UAFTSFyw6e9JerseoWjHJJKgHJ70ERgYHTNBDB2x5pFGO9LJCSkEfYyFqIsomLHAyaOSTLyOD/lDAOKXox84Wfy7uKcHKhsN81pThKVJIEy+zY/Ssx8K3AW9/DyjEchyD7Gr24Q1GS1JhmG69D8e9eXzYNs9jgTSVF36coRRvkU9xKvLlelRvQ7mOZUCt26VL7W2Vl9JG9eO9M9yPghudPhuQRJErZ6Go9ccLHzC0EhUjoD0qcmAcuNjRLR5Gw3FKykQRtPvLRsPCW+QM0DzZFY+g/tU4A9QGK7HEvmbxof/ANtCGQoXkgHt9xQl/GXO0SSN/wDiu1TtoIcgmCP/APxpRDGqjZQB7AVVkyIZbcPXMuHu3CR/6QcmnUWFvboFiTp1Y0+PAG+aa9Qk8mJgMAiqszogPF9+sFtL6geud6xrx9dnUOIp5Ruv0j9K0l4kaq8FtOin1tnAFZm4jtXhaOVtzzb5716vAjTtni/UZXpDHyELuMUchKlG64NeyXXn6LnH2rwzjA6jevVPHD5BlftRfKD0G9Hv64g/bG9ACnoOhFABSny3BHvmnuzbzoyo+oEED3xTNy8yY7ilunytGAwPqjNA0PkE/MxRsB8cpPuOxpDPHmcc5KP9PN2Jo+QiYCaMdOw7UdiC/iMbNiRhgGgobzPInpl2xsWzsaUQIxwwYgdip2pBPbzW0vI6YboebofmlEEPP6QVRj0BOxqWhpkn0m8u7OVHiuMBep5/6VZeh8VGNlnkkkglH/2255QT8r3qqbC2uEdfNgHlk/UnqA/SnuaGO2IlkjlUDbmh3BpdS+5oTQ+NJLlo2N7llO7MfSf29S/1FWnovECToqSyEHlzhsEfoe4rGFpf/hpY5Y7iYDP1DqpqzeHuP76yEIuWMsBX6xgFP07ijoTKmahVgw9JGBXc+9RvRdcgu7O0lWWPEygEKcgHH9KfVfn3Ukgbb1kyQ7O9CzRYau5qQB5pFqT8ts3uRSrNI75DKuB0pAYCuIJpm5hcTLg4xJ/7ooC8tf5scpJXelv/AFAXBnQogyW5s7UWLhZU5QhHsx2DfpXXQhJPq08kx8+AADow7/rQZNRsZ7VoZ0Jdd45V3Kj2PuK48ZMhEhz/AOPRabLiMbquwG2KTQ7oQ39r+HdJI251kGc9cUgJZ2CFiSTTkCwVo2HNGR79KQQW/lTAglsnIJ7ChCexztrNIx/NGw/KDt+tPGn3JVuSGNeQdTkgD/c00YaUYAHIOpJ60uN3HYRjk9UhGS3+n4FCGPbx2tvG8t0wZ3+kHt/6pDc6jJcQiG2Ty4m2HIu5+f8Ammi1LahceZdHMakEITsKlqm2t7YtGyZA3Y9f+BVARKayKluc8z53+aSz2Eg/mSYjQdOY7/tT8+pjymayRMMcNcsMkn2BPU0wXNvLPITJznH5mNDEICAXIQZHTJO9BYKznl7d6Vm2YKVjXB6Zx0oJiFvjn/apsAMoaGAZ/N1+1PPB+jw63fx2dzewWUM7EtdXHN5UWFJHMQDjOMfqKZGzPJ6ziPOftVleE+vW+i61ymFpkYcwXz0hVJFI5HLP6SBv6Tsc70m6Q0rZBbCGCa/8yEsgBzHk5yRvitK8JxW2q6dHcMFV2RcYHWqU4js11jxM1kafYiytZL17j8KjoyRA74Up6SMk4xV38AWM1mhQAiNSCPjavO5z0j1OAvSUW5k0iZV6I3QjpU20jV/MC7nI7Uhh06G8hMUwBR/bpRS6JdaQxZCZbfsx3K/FePJ2e3DROIJvNO460pMIxkVErTWlUqrZU0/w6grhcHORUGtChkB67UJY85CgE1xLlD9Qo4SJj0YFMG2d8vcZXY/FHCAY60KO6jK8rHJoE0y4yDjFNGbsLuV8pc4z9jUH4o1YW8MhOBUi1XVo4IWLHoKqvXrmTUZHYg8n5Qe/zVwVsym6RW3EjyatdHm+nPSql46jhiMcZI8wt0q0uN9atuGbXch7tx/LjB3Zvf4FU5/guscRm41OSJmG7c2NgP8A18969niw8l8HicvItxXpHYbdTFcMZUXyxkK3V98YFcC4wew6mjraFDKPNYKckZY9DQCvpIBzXoHmBtuwMZQ/SdvtQFcqGRuqnY1y335l/WhAc7cp2cDI+aAAsCo5h09xR9rOAxUgYak6O8ZPx2oTBZMFRg/+NAC+3uGs5yB0PQdjTpyR3PrhOH7xsd8/BpgDsVCNkY6MaNjuCOVWyGB2cdqCkyRQXSkGK6QPGNsSDcfY0c2lRSDNtghugIppi1Nm9MyiZR0YbOKUwXEfPlZmTJ/MCP7UDHWxju7MgHz+TplFII/alas0E3LJPLyDb1gc2/eg22rvBD5fnCWP/TzY/vQW1mM7TRTRj4Ax+9MBRJHAXYyucnZHjXKt9x+U03yT3WnXaoJmaM+qN8Z2+fajI54LhuRHKlj3balV1o0/4AhZyw5gDvzekDv+tJ2HyXp4ScQxBbCxv9Rhh/FIJIZZT/LG5HKW/Kc++1aAt4JYETzhhiPqByrY7g9DWVvB7R79b/RpLee2ndp5EW2uVwnpXm5gTuuTtn3r6EaPbWWradbJd2C+f5arKJIwrBsb5A7/ACOtc7aujRx1oqQnfrQ98VMbvgjztRki05WER5uWXmDw8w6qWG6n4IqHSFVmmiDo7QsVflOcGlRmdHSgsgbr0rhcAf8ANN95frErerGKiUlHbDww1cqZGMlwRIF2iUdFH37mkcvMhPOA6DHqxgjPvSSG7dCodmwffpTkkqSxkq+XOx27V2iE0pQp6lJIOxpquUzzZyCBscdacZRysU6r+XHY/NEMwkRo8A46k0UAw3i5BKrgDtSZnWNVPtuRTncwAg7H09qartCI9lAA7CkAZb3GWZ26Vx5zcycpXIG5pHG38s/IoyFwoJ6Z60qCxziuRbjIwMfmx0pysYG1WQfiD/IXfyifrPu3/qmGLMzDIyo7e9PthO9tsoLMcHkHQfeixok8uixQQRNMyoAvpzjlH2FIJDYBmPK8xHQuQAP0pLe3kky8sp8x8bQxnCj7monqGouHaNSCR/p+hfge/wBzVWJsc9U1C3iyiuvOTnEe5+1MbTcxyFwSN+Y70VHzyknGFAycDeucuBl9s9u5qRCqBCX33233pxg04yanY2hlWE3TrmQ9EXI3/wB6QBuQDA6kAU9azpzW8EV1K3KEwFPcH2FTJ/DNYxbRc3i14DXPhdrOn32mcTw6q2o2hvopwyoVx9QbfBB7HvVocKz297pFneovlvcwxuQdhkjcVnTXNJ1oPwbqGtObrTbvT4pjBZTNLLDb85A51P0s2M4Gdq11wnw7ayWVrND67N40aEduXG39K87n6SPS+mbb2LLG3IA2OMdqfrZMJykZ26UcmnmIHlA5ewr0cEhJXlx7E147R7kaYguNDsr04ePkb3Wgpwq8O8N0Tv0bcU9LAwz6T96WRsV5em/XNKirrwZP8GuxGDsW+DSZo7626ws3bapdzE4C0XIhIJ3pUHZkRT8Ygz+HYd+YmgT/AIuRWyeUeyjNSoRAn1D9KS3oSIMSBiqSJbsgN3YO7ZkYn/8AI7VVvijxfacJ2ZhgYS6jN9CA7/r8VJPFXxRtOGIXtLIpNqjg8sedo/lqgfhf4Q6pxpqa8ScUiQWk58yNZlOZfYsOy+y9W+BXocfj67z8PL5fJS/CHpDuAfD3U+PtQGsa2zfgiebL5Adff4T+p7VaGs6NZ6hp2t6Bw7PDBJp8Kmefl5+Vm2AOO+O3QVPeMf8AF9N0nTE4Y06OXSPxaRX13GQXjiDBXZVHU4yCw+ntUd4pbSeHdU1u8sgloZ0SC9kQARN6vQ2P9YyBnvmuxzvZ5vVL+zJs3DE8/E1vosNvM15JMsLRQ+p2PfHzjJpp1izi07Vru3tmmNvFMUQTgCTA/wBQG1Svi2zNnxLfS/jZ49ShuQ3pBDFD1OR0IH70Hj7S7C0vreXTYZTa3aefBctB5KzxYAVgmTjcHO/WuyDtHLJUQwDklVh0O1DmjJBZfqWuS5xgfloRkzyOpyG2NaGYVnzVyNmHWizkYPt3rpHlvnOD/ehgB6AOjmwO496NjVmORvQFhPvt7UcluwORnPxQANIsncEfalVu3KMLKQR0yM0XH5gPq/c9aMSMMM82f1pjHWCe5KhTKeU91UGnKKyaROaO8dWPXKZqNLNJbOCAWX3GxFO1rxHOoVGMcqezjDD9aEVYuGmXsTAtNGwO6uV2P322pytbi/W3fCrsQCNjzb70kh1KG4jUBmikB6dQfke9SLSJEfH4jy3GcpIuzA/alIaos3wpgkhnt2kupLa585I/LRxGzLzZYK5GM5A9PWtV3HFUdhxRb218uv8AnXUYVTJCzQn29UYway5wjdWd5q/+GXNq11Z3Sqxhc8qRtnc57Ek7HtVra7qHFvh9/h8y3K61wfKyxyRakcS2XNspaUYPJnbmPTvXJNWzdaRpzRCJIWiMbW6JsqEYz/5DG/69azL/ABB3Wp8IcUW+sxX9+2nXmLWSWQD+TKoyFDD6wVOd/ajIf4pNC4W0U+XoWtOyXDW4MkvmQs4PqCTnYj49qqfx68Y7vxY0jTLWysG07SbVzP5TOHeSQjGSR2A6VvgjJPaMMpO+GOPhqSJBqDxiVxmK4X6ZR/saN4g1IxoeQ9fmqw/hp4o0qz460iw4jjWaxM4WJpDtHIdlYjoRnqPmtfeInhbY8WvJqegxpBexOUkgA5UmZTg7dm2/WuT6hglOH+MxkpNUj5k3MIjw4K56jApKlwwfP0sD16U6sRMvNgYPQ/8AFIrm23JU52yfivRNBU+Jog2QS31FRvTa5WJyAT+21dgkKNyhyD/SlNzah41ZPqNAhJLysocHmB2J/tTVdwHmzjJIwR70thkCSmFup236UbLHzoyH602pCIrIGik5e1AdiMKO+1L7+0KNkdOtIVDGRdvT7mkNDlbnyhHGv1N371IouS1tiFJDtuSeopislAkZ9+ZR1PahTXbTSFAdmIQDP5R1/ehDZy5uZ7jMUHojf6m6BVpFJaIuAgLbbnoKkAtkVAuAzdSF/wBz2Apuu4mA5nUDm+hB2H2psSGdpnCtGhIwc5FdjjBZQdz3pYlm8pzyhVAolyIuYJgt7+1SMPhRDewqwLesDAq0eLuD7q54bhdVJZG5ufsTiqpsfTdQF3KjnG49ya1VouvQX3BqiaMShnETBhnLDbP61yciTjUkdvFgp2mVnwJ4ecXarw1BqVnNLEY71LeGN2xyx4JMq56qDtgVtPhfRv8ADNC0+0UlhbQrGWbq2Buak3gm/D2ocDrFc2aT3BIDIkWXA6ALjoKdL/T7Gyv54dOk57Un0g/l9xvXByJyywUnJHbw+mObgkMa22QOUYU0ctogOCBmnAQHbocUbyAgHbNcXU9LsNnk+WMYBHaks0ALBsYxTw8ak4FJ3tzkYNJxLUhFHzKPTg0YV2G2D80fyhCQw/UUlnlSJHZnAA7nahRCUhNdcy5OBgVQvit40W+kGfSNHlSbVPpkkXdIP/bfFJPFfxpku55eHOGJGkmdvKluoQSSx25I8dT8in3wb8A7fhqU8UcZeUt3CPNhhmYeXbHGS7E7Fx3PRfk13YeMorvk/wCHncjmP+GP/pGPCnwGu9YuU4o4uSQqzebHaTjLMeoaQdz3Cdup22q6bDifR+KuJtR4KtBdRw2NiZbmdMocseUKrkZJx1Ye2BTlrTalx9wlp2q8IavbppS3iSPGEKvd28cvrVH7Z5T29X6078R61p2jy3uuajItjY2I8mW8aEgopIwCcepcsOnSulyt2zzlog/DPC8eiaJpHD2mam1xYQGSSCWTd5YeZvTzDbmBYZ9xVJ67xBNxRpusaBp6266naak0H4yJS3lRxSAgyqRhmbGFC5JxvV16lr+uXfG+nabwVe6dLw+LTy76YRCVFlLEgQkEDzApySDyrnfegz8JaP4c6VJNKlpFb+XJKZGfHK3Usx9mOcudydvanpf2L0xtxtpstvrM6XbM8koMsju3rdvdiP7DpUe4u07TtPTTDpt+8sU9shmgeQu0Uo+rsAFJ6DtSrjviH/5Vr91c6dGyxRkjz8EGTJ2wvYe371FrzT7i0/DTXMREDoFZlYsOc52Oeh26Dau2C0rOWfojcHBXGx70XEcLy9qPK7nHT5ohjyhQRvkmtCAco2zjNFKwHuKPH8xce1FcpXqCV+KAFVuULY5jjvtmnWCEMmVO469qaYBuOVgR7EUvUSRp6JGH2O1AxZHaEb7jJ/MP7GiriyVCSpYEde1H2V7dQYYO0ig+oAjall1dw3S8rjdunMME/qKaAYysq7OuR2x3pPKQAWwcA5Dd1p6hsFfPlyYPTDnakl3p88AJ8tuYdR3/AOaCRFBePHIOVmB9170/2OtXUY5udG8vHMrdWB7j7VFZnZRkMynoR0NGWFyY5cOxx0yB1qWVH01H4P30Vxehb21Mc7MIZGkOUkhfAKn2I2YH3Faiv0t9U0ODTrqzF5JNbgTKZOUGJlIkB7EnGQPesa8BXVvDqM8V5dTRRx2qT8rPnndVyDjv8CtT8MXnEVzFbm4s7S0gdszSXZcs6cqmPy+XbBB3J6EGuTLKjrgrKy8J9Fl4O8Rb/hvVtTGocIWwFxp+mzW4nS7MxwrBcEKwGcn4of8AEf4b2XAOqzT6NYm30K/i86AJvHFKNpI19uxx81aWgcPtwvxFeHh2+ittV10sLZr+A3EETxqW5AwOVU5JFZn42XiSLirW9H4mkkbUBPJJMiuTGXcZ51HTlYYxjsK34snJt2c/Ij1SKw0i4gh1SyEtybZWfmedFLFB22FfUjwj1m24o4AtdQttTbVGVPKe4eLynZ1H519+m/evlW9l+GA51PMDha07/DH4tXXCd7LpUlvd32m3qYe1tk55S46Mq9zjqPYVpKF7I7aMsQy8rhXJZ8YNLmA8sNykZ236UVqEaWwEkYDcwzv2/wCa5bTpIV52K7b43rQQkuYArBkzkbnI61yxuxNL5L9D705TeWyjCnfoSaYrmMwPzlQpztSA5q1r5JMijZTvii7afzuWQHcjlYU4SSfi7Vs4xj1EdajsObeaRM4B3FAh5uoAUwR6TvUevYSrYUehd6k8UhuIF6HvTdfWyvFIBnKsOntSKG6CQrAOXq5o6zXluNvU/tSUgKnL0UbAdzS/Tbd55W2RI9udj0ApeBVjtZQFiq5DPJ2HTrTtdaQkUXmTcgY7qgP96X2DWllC/kR+sgAyvuf+PtSS4und/LsY2nkz6nYb/v2HxRZXUYbvTJ58fzFWP26AU2S2EdvkSSBRUldZ+lxcoik45E6Z+T3pvuLOzjDMrGTBxzYwCf8AehoBjTlkblhQFs/U1Xb4V2N1rnDWp2cJYz28iSojbgEf81TZ8kzRonpZmAGfetG/wzxGS71VuYmRcggDZvgn9Nq4+SvwZ2cT+ZK+E/FqDgbVtN0ue51OOKQySNp9nFzT8/Keh6EDGftV3+G3H2k+JOnzatpV00pVws8MqckkTY/MvyNwaxJ/EBY3dp4i/wCM2m0DKiAZH8phtjB7Vfn8I0eqXy8R316tsiRCO1AiK80jhixY8vUDoD0NeZD6bhxY/vRbs7Vy5vO8dKjTXl4xRcqE4xt7mlJztmvcmamjsUhNyZ2HWuGI996NdPKBY1HeLOMdL4P0ibUtUukht4x3O7H/AEgdz8UutukDlWw/V9RttMt5Lm6lSKGNSzO5wFA7k1lHxL8WNX461JeH+EYbh7SZjH5kQxJc+4H+lPcn+1J+JeM+KPHfiCLQtDs5EsGbKWytgBc/5kz9gPb9smr94K8POHvAnhS91bVm/FaqkBku5zFznA35FXsuei9z9VduPAsf5T9PPz8pz/CHgw+FXgrpXh3p8evcRzRvrbhSj5wkHNjCpn3JA5up7YFWd+J1fWOPNT0bW9Bjh4eTTeeB3AkS7JYKwPZeUbcnXvTFrHCr+JmmcDcY22p3VuYJYNSbTZXDQyrnPqwPrA6HpUt4k4pm4c4d4g4guLGSa106I3MUPPyPKqnDDBHp9wdwRWjbbtnLSS0JeDdH0rTtOs9C0gwWumxO89rCkocvGWJYIDuVySPiq9ur3iDxNs+JeDL/AE+H/D4b57M6jC3J50CNkqqnPqGAC/0jfviua1pdl463vB+vaPBqmnadpyySgsDbSSc2MgMpyqAjdh9XQdzU+1biHh/wo4fubu9dVggXkkcAc/OfpRU7seyD7n3peOvkPdjHIdD8LuGFiKxRPDGsEPJF0LHCKFHYsQAv1MTk1DuPLW2sOGbrU+Or6KD8chtYbZ4/NjhlkHKDyfnkGc/6V7DuWqPgLjHxJ1LhnxBvdTjsrS1vBd2fD97A+eVH/wDucdZWAznGBkY2qb8cadZcWce8MWGq6Otxp62l9dQNcHmhNyqKArKN8oN/kHahJJ7C7MzeMHBmncNcIaNZ6C8SXdivLc5TlEpAz5rN3PtVDLaXOq32hm/unjS9yyvPCUQAMR6T0cHHUbA7VqX+IjQX07R7MSxgRzFBI0QPLhQAcf8AjnH6VnniUape6NoumwaWzRTFhYzJESZArerkPtzHfFdGCdxpsxywd6RH+IoBaapcRg5UNsQuBTJOMk/FS3jyxktdShkJV4JYgUlXPqON8+xzUVYhmOK6Iu0YyWwFvIQQSdh1peYVdecD0n+lNowsm42pwtZdyMYXuSdqZIBUYOB2pckUsQBBznt7UaoEmeT0gbZ60OKJoTjJ/XcGgYGORo252BHuRtTzbRQ30Rw6semGwN6R+U2AyqAcb9waAsWUZU9LHqFH9apAHS2xtpCYhytn6T0P604W8iXh/DXalTjbm+ofIPekENw6gLMpKN+Yb0r/ABEPLycolTt2YfaqEMmt6Q9hKQw82JxlWB/tTJAjSuAow2anjWpv7Ux7vbk5DMcFT+tI9N0ny9RgjaONnMg3OxPv96iSGkT/AMJtP8zWbEFkjuJ3VVeaQJz75Y8x2AAFbp05Y9U0tbm0mWe3ZSiTqedGk6YGOgUbVkrwh4Us+KdTv9LmxcqYHjQAjETkEhwe2D7VHbzUdV0XRbuC11G5tINw8UVw0cbnoTgHeuScFJ0dUX1Vl3zeLuh8KeJsGg6hNcNotkqo2qWh5jBdhuYnH5lAPKw+anfiv4eaRx1wvb8W8J6jb6pqOnAsfIlVmubbOSvL1DJk4yOm1YEtrpridFSYeXBuAScsSck/cmrGju54NFM0UjxTcvKHjYqcH5FdOHCotNHNlyOWmRjXCI9RmAJIRjgVbf8ADTcCx8UOGZw3Mr3BjZSOzIwqn9X/AJs/nnPM6Aj5Iq0P4eILu78QdAWzK/iRM8iiRfQSsbEA/fp+taz1ZC2UzBqseoo0Ug5DjCnP96QzCW1lJbbtTbJFJA4K9Kc7bURcw/h5zg52b2pWMcLW7SblRtyKNnt1mHIyHmY7GmKZHsrhckhTuD708Wl6l4OUOM42pgxFCpglZB9J2NNWrIIpQw7b/pUlubblZWxysO/vTRqsZmgaQsCQcHHtQIBpkpEJVshT0rl3ICpA6nr9qSafKERsnJA6YrskzMSRGGbtntUsaEXkhpFBOAp64p2iYJywxgAdyB0NNzfy5ADvLsftStbmOCMgAqe56k1DKQ+WShmD3Byi/SgOB9ye1Oja4kNqY7YxxITy8sR6/wBP96hsczTSLgycuc4yKldgtpGEaTlV+vKQCx/WmhtjfIlzOwYK5J3XIpHfwSqo5ygI79SftTzfajBApjkm3LdMYLfFJwE+t4JDkbDbCj5qhEWWBvMDsT/4rjqa1H/DpII/xM8UeIpSqMG2IYDJ6frWcLu5EbBY0AA7gVaX8PnGqcOcWrYX7BdP1VlVXc7RzdFP2P01y8iPaDo6+NNQmrB/xJSy2/iHpl0sedPhiVwQuxkDZOf2FSPwf4ok/wD1d0Uafpl5aaxqEiG8PmDy5YWBeRnQbYKlSMYwaD/FXcppj6TBAnKt80nnPjsuPT8dahHDHHmkaRxBp/EOmi403WLaPykXTYVW3mYKoVGU9m35sbnOanCpSwUPO4xz3Z9II2598Zo51AGQKBAA0EcvLyF0ViPYkA4/riqj8W/HPT/DuN9PtlS+16VfRbg+mD/ykPb4Xqa86ONt0j0nlSVvwfPEbxO0fw/01p9QmD3LgiG1Q5klPwOw+T0rKtvpfGf8RPFhYOU0+3bDOAfItFPYD8zkf84FPnh/4ScSePWuT8Ra7fTQ6UW5pb59nmwfohHQKOnN0HbJrSmqRSeG/h7fW3h/w4ur3mlxFGt7QjCMRnmcE8zbbn8zfauyONYvNs4MmZ5deIScH6Fwp4Ow6RoVjcQjVNYuFt4yxDzTynqx7kAZ36DoKkfDemcUaLqnF0/EctrqSXUitp62q+n8OFOYuQ9DnrnrmmqDQNF1u34I1jVLHzOK7O3iv4bpEMcvPgeYp/8AEs2OQ9MULi/jqTT+B7/iTRNTs9Ru7e5T8OioJOsgVouQHJfqMdaXv9kD1HqnDWjXSadeapZaZ/h9sbiOwkm8kxwEeolOhUY27j2qpeEuE+NOLLrV4dW166u+Crm8eSztJRgyQFuZfMJHMEIIxFncdcDYv1h4eXviLxPY8a8WafaW97awiCK2iYtHEqknnYHIaTfp9K43yakPiZ4oaL4Z6CkchVpJYy1tawSAyXJydv8AxTu0nfoKqm9L0ntW2D4g8QOG/C7hiSW5vP5ADIsq8rTTygYCRjoSOm2FQDasvXHCHiZ/EXqC63ZaZ+H4ejkMdo1zN5cKDuQTvI3dn7n7U0cDaBq/8Qvi1CuuXGNLtlN1cxQ+mOG3Vv8AKjX8oYkDPXqa3HrNzdW/DY03huz08rFyQG3nJSJbYHDovKNiVyB+9XSxafpG57+CK+GGgcScJcA/4DxJPb6vNYlpLO5sZzNLLETnkw2CSu+MHcU9zWli0lpJNPFHNeFlsxL6HLlDzKAd+bl6j4qEnRLPw+/xyaXiRtH4KuHiSC3d9tPnYg+ZHK26qTgcnQ5JqVXOmWHFj6NrMFnpurxwz+dZXs0uEhZhgyJj6ycYAHWsZtN2ax0QrjfQLbiee30W7RJDIpJXmywiGObb5OBml/EHgtqlxwDZW4it4rLR1d7e3RAskKEb4I3+SKj3Een6f4feJzcVSrflruBre5uJLgyJGCQVKp+Rcjt7088VeN3Nwf5lrPcO+pSNbx3CMOWUKPUMfr1rzp5MUJ1O7+DrUcko3GjEvjLok2mXlm7tFLHeFyvlDAjK4/qRuT71Usg5dxWkuNLeDXTLZl1a7sbRriYLuYzKwCqfY8oJ/Ws73UXK7RkYIOP2r2uPJuKs83NGpMScvmgFetCYjkCY3Xr8mgxlopMHoaNMYbcV0mIZbyPGco/LnsdxTnBf8x5ZVyPdegpojjMZzk7dqOROfdcj7Ug8JHbsuGZT07bnNKFWMAMS4OegXb9xUeSN4nBVm5xucNinS1u5UJJOATk5FNMYpuZiqkxFSP8AQev70gjuX5jm3VSPnO3xmn62KO2WgjfA3I9qOnFikeWslTPQrk/0qrChri1WCZFjmwrb/wAxlyf2pw0xv5i+ZKkihvTID/SmqZNNkVnV3EqnozcpH6EULTeSS8toyWRS+XeQ9B+lTIaLP4e4yu+FLK6bTbdLbULxWge96sYz1Cr0B+arTW9Qurudme554kOEAP0/GKmGrzg6Fp8luOaCKWW2eUZDOT6lJHbaq+KeXNMQF3PLgD+9KEUthOVii3l/mLzD6t+nQ1MDec+iOASVBGfiomYWjjMqIOUYAbsCak1pyHRLrmAB5Vxj3zW0WZMIT/q7AH80TY/Sp/4UcSXXB3GegX9gkElw92luEuDhCJPS2T22J398VAdMmQB4TjLjI/Sl1vNBaanpElxF59tDOtw8PPy8+DkDPbpSmriwTpkOmjOCzofnFNksahsqcEfpUoW38xC2V9wo3zTdfWZYnmjyTvse1QVQlguEmhNrcgFPyv3WkM9jPYy88bEONx7MK9LamJjgMAO9OlpeedD5E7EgfST1FNMQHT9fF5ywTYWUdCaWzwgpIGXGRgk9/tUf1DTD5jNH6JV3AHelWnaqbmI28xImXamA0WxZXkX8yMQaOMhDYzgV6ePkvZPaVeYH5HWk00pAI6VLGGysFk5iQdhQoUaX6iCBnJzRMy4VGPUDpQFlZSOUkc3tUjscjcog5VPKD3FLLHzrmUcw5IQMcz9vsKR21s88gIXLHoQQNqlFlaw28ZAMktwy/TH0H3PagqjyLHFCXhhjDqf81xljTTeLIFYm4kkY9QDsPuaOvdRggZecF+U+mPov/NM19rl1dKU9MUa9FQYH2qhWFA8soGSW65ztTnY83OrZwc9Qeh96ZbKNnlVjk829PkagKvIuTsMe5qaCy2+MddtePPDQ6rq0yyXOlBYLlc4cyYwjL/8AkMH96r/g3TZNLtdA4jsrOy1KbT7tpLnTZxJythgY2fflJO+AuMcuTUXvbmdYbq1DssFxyiVOxKnI2+N65aX2pwWczWt55UcLoeUTcpYnYMq5yem+OlZ48ajaNMmVyaf6Nq+I/wDE0dO0eLTtCt5rfXrmIfiWuFH/APL2I3THRn36jYAimnwm/h0v+MyOJOM2nis5SLhLOcsJ7oNuHkPVVPXlHqYY6CjP4ZvCnRNW4bTxH4nme8l810tra6UcsZjABlIOzfBOw6nfFXnqeoca6hqGkPpOnwLwrFdR/jZpJcyyW7H1cqHcjGMt1I6bVg3HH+MDa5ZNyF2j8XaRqnFknA2iKsCafYCe5a1wqxRghI0H/lv22A+aXcFcHNwRa69Zadqc182pXj3sc9zJzyKSoUh2H1cpGMjGxxTjfjTodRu9TttKFtc2lqUa9tolDyQbsyJjrgr0qqOKuOtH4n0zh1+Ab2PUb5r1pmht55LcwIVYM8xXdAHYHlP1HYCs17obRL9c8U7ThnjaDhC40TULzUL62S5t5LJQw52yCMEjlUFc82cDr2pBwf4SFNQh1zWbSyhu4gVxaQ+XGASSSg6ksSS0rbt0XAqScK8CRaVZy69xPdyajrUsSC6uZo/W6r9Kci9FB3Ea9Tu2TtTJxp4oT6vxRa8HcJyW93xSS8jTucW+lIF9Us/ZpAD9A2GR3qqUvCe1MZfF7xts+DI49BsbMXOtXX8iDS2UAHmOFklwfSmfpTq3U7VlnjfgnxDNxd69xVo2oxs9wls9xcABedtkjQA9OwA2FX1q/wDChYavrdhfScWard3UzfjL+W5hKm5TIy0cg+ls9M9Bire1DgvStQ0aPTdZW/1C0R4Cn4u4PNE0R9MikY9Xue/eqWRY/BOLmUH4T8H654J8RaXf8RW7wWHFVn+BmlI5RYXBfmjSU9s4Az7mtFapp9lPpszatK8VmrxcxSVo8PzgL6lPQkjboc0frWjw8Y2N/ousRR3On3w5JIdwrLnIIPUHO9Rzj3gbSNW4cgW6k1KxsNIkjnK6a7sZ1iIIjEf5ycbE9OtZyl9yVspLqqGjjvwdtPEHTbxOINTeOG0vjIksMpVILZSCUZPp5+XILH3zT/pV7p/FnCWj3GmQJHpyWyT2KxMP5TRP6MY74T+td0+ex8VOAhcarpf4K21pWuDa+aQ3KSRGXI6ty8pOds9qkGj6LBYNBaWkUdvboeVY4kCovfGBtUyaWkUv2UH/ABCW9zo8uqcS6ZeeXJcWgS6spIy6zEAKjqfyFQTkdDWQzf2FjpMLvePYcQWt2063SczGVCmylc8oUMPbfmrb3jxfaPPo+uaXd3qrMkPmSxIrHy1PQ9MH96xNH4e3N/wDPxcmjzXul2GreVdXAlcT+QVHKGGORUJz6s5yd6146W7RGZvVMtrStMaTQdR1/wD6S1tdbs0vmhjt8eQxHqYt1K5BOPms6azatFezn1crHmViMEg9/wBa0DxZxBeWPhnZa5wfqk0PD2oEWc+nzIHayJ25Y3O6jKkEf+6onivXpNduYbl40jnCBZOT85A61pjTtk5Kojky5GQMEUCNznfrShHSUdce9FSR+WQQOncd63MGhXEVbYY5qNjiKkNgqD1wetJ0QS4YDDdwKUwkKwHO6n56UAHrCCc86gdi4pfApjA/mKp/KVbINJ45nIHKiSAezYNLLe9Q+iaAFScYYb0AOETXEwDcsU4xv+UmnGK/tSqxyGeLsFcZA+xpultraIB7d3QjsG6UilmlJyWBRtiFXIP3FWkA/wAtnZ6hGAIFWT6RKVBOKR2/C89qzSNEyQplhIGyhojTX5WMiZjmHVVPX9KlNrxFG0JtuYlcZ5dunfbv9qGNCW38y9ji0xYh5c0qqqn/AFHbmNaFuP4QrHV+HLXUdE1+4/HvCWkivIP5c0oH0qy9PbeoJwxpVrq/DjJBHHFbvcBpJYvrBx6WyegU429s1p3w01u4tOErXmuJbi3t5CksEh/mxMuxwfzDOSK5p5XFmqx2Yd1nwz4rtdBi1tuHtQh0JWOblo/RkHBJ9hnbPSkEcTxabPESCxjJwD+1fQuK7Ou389rbRJcWKEW9/aTZEQjYZ5MY6kHNYY440224e4/4l0K3AFvaXc1vEM5wvVRn7EVrgy93TM8uPqiEWClp1O4cGhahcE3crZARThcUOxbyVZyASFJLe1M1xNk4zuTXQ/DA/9k=" alt="Sonia Sawhney, Founder of VRW" width="160" height="160">
-          <div><b>Sonia Sawhney</b><br><span>Founder, VRW</span></div>
+          <div><b>Sonia N Sawhney</b><br><span>Founder, VRW</span></div>
           <ul class="creds">
-            <li>20+ years in food safety</li>
-            <li>NABCB Assessor</li>
-            <li>FSSAI FoSTaC Training Partner</li>
+            <li>Food Technologist with 25+ years in food safety</li>
+            <li>FSSAI FoSTaC &amp; PMFME Training Partner</li>
+            <li>Senior Consultant &amp; Lead Tutor (QMS, HACCP, FSMS, FSSC 22000, BRCGS)</li>
+            <li>Accreditation Assessor (management systems, product certification, inspection)</li>
+            <li>Visionary Women Entrepreneur of the Year 2025</li>
           </ul>
         </div>
         <div class="letter">
           <p class="open">"Food safety is not a certificate on the wall. It is what happens in the kitchen and on the line every single day."</p>
-          <p>For more than twenty years I have worked across food factories, hotels, kitchens and warehouses, first as a practitioner and then as an assessor. As a NABCB assessor I have seen what separates businesses that pass audits from those that truly build safe food: clear systems, honest records, and people who understand why each step matters.</p>
-          <p>I started V R The World Professional Services to bring that experience to every food business, whether it is a small caterer applying for its first FSSAI licence or a manufacturer preparing for FSSC 22000. We do not hand over a stack of documents and leave. We stay with you through implementation, training and the audit itself.</p>
-          <p>Training is at the heart of what we do. As an FSSAI Training Partner, our FoSTaC programmes are delivered by trained trainers and evaluated by trained assessors, because a well-trained team is the strongest food safety control any business can have.</p>
+          <p>For more than twenty-five years I have worked across food manufacturing, catering and retail services, first as a practitioner and then as an assessor. I understand the requirements and constraints of an industry that always looks for strong hand-holding.</p>
+          <p>With this idea, I started V R The World Professional Services to bring that experience to every food business, whether it is a small caterer applying for its first FSSAI licence or a manufacturer preparing for FSSC 22000. We do not hand over a stack of documents and leave. We stay with you through implementation, training and the audit itself.</p>
+          <p>Training is at the heart of what we do. As a training partner, our programmes are delivered by expert trainers from the field, because we believe a well-trained team is the strongest food safety control any business can have.</p>
+          <p>Clients of any consultancy expect easy access to experts, 24x7 availability, cost-effective solutions and work delivered on time. I can proudly say that V R The World offers all of these effectively and efficiently. We also focus on customised implementation of standard requirements, and on making your team self-reliant so it can maintain the system effectively afterwards.</p>
+          <p>The quality and timeliness of our work have earned the company a positive reputation and a niche in the industry.</p>
+          <blockquote class="policy"><b>VRW Quality Policy</b>"Our vision is to be a growing team, committed to quality and performance. We assure our clients that customer satisfaction is our objective, excellence our strength and success our goal."</blockquote>
           <p>Thank you for considering VRW. I look forward to working with you.</p>
-          <p class="sign">Sonia Sawhney<small>Founder, V R The World Professional Services</small></p>
+          <p class="sign">Sonia N Sawhney<small>Founder, V R The World Professional Services</small></p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section" id="services">
+  <section class="section band" id="services">
     <div class="wrap">
       <div class="section-head">
         <p class="eyebrow">Consulting services</p>
-        <h2>What we do for food businesses</h2>
-        <p>Pick a single service or hand us the whole journey from first licence to certified food safety system.</p>
+        <h2>All major food and quality system certifications, under one roof</h2>
       </div>
-      <div class="svc-grid">
-        <article class="svc">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h6"/></svg>
-          <h3>FSSAI licensing &amp; registration</h3>
-          <p>Basic registration, State and Central licences, renewals, modifications and annual returns, with document preparation and follow-up.</p>
-        </article>
-        <article class="svc">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="M8.5 14 7 21l5-3 5 3-1.5-7"/></svg>
-          <h3>Food safety certification</h3>
-          <p>Implementation support for ISO 22000, FSSC 22000, HACCP, BRCGS, Halal, organic and other schemes, through to the certification audit.</p>
-        </article>
-        <article class="svc">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>
-          <h3>Gap assessment</h3>
-          <p>An on-site review of your premises, processes and records against the standard you are aiming for, with a clear action plan.</p>
-        </article>
-        <article class="svc">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M9 4h6v3H9zM6 6H5v15h14V6h-1"/><path d="m9 14 2 2 4-4"/></svg>
-          <h3>Internal &amp; hygiene audits</h3>
-          <p>Internal audits, FSSAI third-party audit preparation, hygiene rating readiness and supplier audits.</p>
-        </article>
-        <article class="svc">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 4h16v12H4zM8 20h8M12 16v4"/></svg>
-          <h3>Documentation</h3>
-          <p>Food safety manuals, HACCP plans, prerequisite programmes, SOPs, records and traceability systems written for your operation.</p>
-        </article>
-        <article class="svc">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9"/><path d="M12 7v5l3 2M17 3h4v4"/></svg>
-          <h3>Labelling &amp; compliance</h3>
-          <p>Label review against FSSAI labelling and display regulations, product approval guidance and regulatory updates.</p>
-        </article>
-      </div>
+      <ol class="svc-list">
+        <li><b>Complete consultancy and certification</b>Establishing, documenting and implementing a management system custom-built for your company's compliance with ISO 9001, ISO 14001, HACCP, ISO 22000, BRC, FSSC 22000, GMP and more, leading to certification. We also guide you on choosing a competitive, high-quality certification body.</li>
+        <li><b>Management system documentation</b>Developing quality plans, SOPs and specifications, and standardising your system.</li>
+        <li><b>Training programmes</b>FSSAI FoSTaC trainings, awareness programmes and auditor trainings (accredited Internal and Lead Auditor) specialising in quality and food safety.</li>
+        <li><b>In-house training</b>Programmes on internal quality auditing and standard awareness.</li>
+        <li><b>Certification audit support</b>Assistance during management system certification, initial and surveillance audits.</li>
+        <li><b>Product certification</b>Consultation for product certifications such as ISI, Agmark, Halal and Kosher.</li>
+        <li><b>Food laboratory set-up</b>Consultation for setting up food testing laboratories and help with project implementation.</li>
+        <li><b>Annual maintenance</b>Ongoing support for all the standards above, with system improvement and regular verification.</li>
+        <li><b>Audits and compliance</b>Gap assessment, internal hygiene audits, documentation, labelling and compliance.</li>
+      </ol>
     </div>
   </section>
 
@@ -401,7 +463,7 @@ footer a:hover { text-decoration: underline; }
     <div class="wrap">
       <div class="section-head">
         <p class="eyebrow">Certifications we cover</p>
-        <h2>All major food certifications, under one roof</h2>
+        <h2>The certifications we prepare you for</h2>
         <p>We prepare your business for the scheme your customers, buyers or regulators ask for.</p>
       </div>
       <div class="cert-grid">
@@ -411,54 +473,68 @@ footer a:hover { text-decoration: underline; }
         <div class="cert"><code>Codex HACCP</code><h3>HACCP</h3><p>Hazard analysis and critical control points for your process.</p></div>
         <div class="cert"><code>BRCGS</code><h3>BRCGS Food Safety</h3><p>Retailer-driven global standard for manufacturers and packers.</p></div>
         <div class="cert"><code>GMP / GHP</code><h3>Good Manufacturing &amp; Hygiene Practices</h3><p>Prerequisite programmes for clean, safe production.</p></div>
-        <div class="cert"><code>Halal</code><h3>Halal certification</h3><p>System preparation for Halal certification bodies.</p></div>
+        <div class="cert"><code>Halal / Kosher</code><h3>Halal &amp; Kosher certification</h3><p>System preparation for Halal and Kosher certification bodies.</p></div>
         <div class="cert"><code>NPOP / Organic</code><h3>Organic certification</h3><p>Support for organic production and processing schemes.</p></div>
         <div class="cert"><code>ISO 9001 · ISO 14001</code><h3>Quality &amp; environment</h3><p>Integrated management systems alongside food safety.</p></div>
         <div class="cert"><code>FSSAI Hygiene Rating</code><h3>Hygiene Rating &amp; Eat Right</h3><p>Readiness for hygiene rating, Eat Right campus and similar initiatives.</p></div>
       </div>
-      <p class="note"><span class="placeholder">Placeholder list.</span> Confirm the exact certifications VRW offers and we will update this section.</p>
     </div>
   </section>
 
-  <section class="section train" id="training">
+  <section class="section train" id="trainings">
     <div class="wrap">
       <div class="section-head">
-        <p class="eyebrow">Training · FSSAI Training Partner</p>
-        <h2>FoSTaC training for Food Safety Supervisors and food handlers</h2>
-        <p>FoSTaC (Food Safety Training &amp; Certification) is FSSAI's national programme for training people who handle food. VRW is an FSSAI Training Partner: our trained trainers run the sessions and trained assessors conduct the assessment, so every certificate is earned.</p>
+        <p class="eyebrow">Trainings</p>
+        <h2>Training programmes for food businesses</h2>
+        <p>FSSAI FoSTaC courses, food safety standard trainings and other management system trainings, delivered by expert trainers.</p>
       </div>
-      <div class="levels">
-        <article class="level">
-          <span class="tag">Basic level</span>
-          <h3>Food handlers &amp; small businesses</h3>
-          <p>Personal hygiene, safe handling, cleaning and pest control basics for staff and petty food businesses.</p>
-          <ul><li>Catering</li><li>Manufacturing</li><li>Retail &amp; distribution</li><li>Storage &amp; transport</li></ul>
-        </article>
-        <article class="level">
-          <span class="tag">Advanced level</span>
-          <h3>Food Safety Supervisors</h3>
-          <p>For supervisors at licensed premises: food safety hazards, controls, FSSAI requirements and record keeping.</p>
-          <ul><li>Catering</li><li>Manufacturing</li><li>Retail &amp; distribution</li><li>Storage &amp; transport</li></ul>
-        </article>
-        <article class="level">
-          <span class="tag">Special level</span>
-          <h3>Product-specific courses</h3>
-          <p>In-depth courses for high-risk product categories and specialised processes.</p>
-          <ul><li>Milk &amp; milk products</li><li>Meat &amp; poultry</li><li>Fish &amp; fish products</li><li>Bakery, edible oil and more</li></ul>
-        </article>
+      <div class="tabs" role="tablist" aria-label="Training categories">
+        <button role="tab" id="tab-fostac" aria-controls="pane-fostac" aria-selected="true">FoSTaC</button>
+        <button role="tab" id="tab-fs" aria-controls="pane-fs" aria-selected="false">Food safety trainings</button>
+        <button role="tab" id="tab-other" aria-controls="pane-other" aria-selected="false">Other management system trainings</button>
       </div>
-      <div class="fss-rule">
-        <b>1 : 25</b>
-        <p>FSSAI requires licensed food businesses to have at least one trained and certified Food Safety Supervisor for every 25 food handlers on each premises. We train and certify your supervisors on site or in open batches.</p>
+
+      <div class="pane" role="tabpanel" id="pane-fostac" aria-labelledby="tab-fostac">
+        <p class="pane-intro">FoSTaC (Food Safety Training &amp; Certification) is FSSAI's national programme for training people who handle food. VRW is an FSSAI Training Partner: our trained trainers run the sessions and trained assessors conduct the assessment, so every certificate is earned.</p>
+        <div class="levels two">
+          <article class="level">
+            <span class="tag">Basic level</span>
+            <h3>Food handlers &amp; small businesses</h3>
+            <p>Personal hygiene, safe handling, cleaning and pest control basics for staff and petty food businesses.</p>
+            <ul><li>Catering</li><li>Manufacturing</li><li>Retail &amp; distribution</li><li>Storage &amp; transport</li></ul>
+          </article>
+          <article class="level">
+            <span class="tag">Advanced level</span>
+            <h3>Food Safety Supervisors</h3>
+            <p>For supervisors at licensed premises: food safety hazards, controls, FSSAI requirements and record keeping.</p>
+            <ul><li>Catering</li><li>Manufacturing</li><li>Retail &amp; distribution</li><li>Storage &amp; transport</li></ul>
+          </article>
+        </div>
+        <div class="fss-rule">
+          <b>1 : 25</b>
+          <p>FSSAI requires licensed food businesses to have at least one trained and certified Food Safety Supervisor for every 25 food handlers on each premises. We train and certify your supervisors on site or in open batches.</p>
+        </div>
       </div>
-      <div class="other-train">
-        <h3>Other food training</h3>
-        <div><b>HACCP awareness &amp; implementation</b><span>For QA teams and production staff</span></div>
-        <div><b>ISO 22000 / FSSC 22000 internal auditor</b><span>Audit your own system with confidence</span></div>
-        <div><b>Allergen management &amp; labelling</b><span>Prevent cross-contact and mislabelling</span></div>
-        <div><b>Personal hygiene &amp; GMP</b><span>Short sessions for kitchen and floor staff</span></div>
+
+      <div class="pane" role="tabpanel" id="pane-fs" aria-labelledby="tab-fs">
+        <div class="courses">
+          <article><h3>HACCP Awareness &amp; Implementation</h3><p>Understand HACCP principles to identify, assess and control food safety hazards. Learn practical implementation methods to strengthen food safety systems.</p></article>
+          <article><h3>ISO 22000</h3><p>Understand ISO 22000 requirements for Food Safety Management Systems (FSMS) that apply throughout the food chain to control food safety hazards. Learn to implement and maintain effective food safety management practices.</p></article>
+          <article><h3>FSSC 22000</h3><p>FSSC 22000 requirements (ISO 22000, ISO 22002 and the additional requirements, including TACCP for food defence and VACCP for food fraud prevention). Develop skills to assess risks, strengthen food safety controls and prepare for certification audits.</p></article>
+          <article><h3>BRCGS Food Safety &amp; Packaging</h3><p>Understand BRCGS (Brand Reputation through Compliance Global Standards) requirements for food safety, quality and packaging, which set strict quality and safety standards for the supply chain. Learn practical approaches to compliance, risk management and audit readiness for this GFSI-recognised standard.</p></article>
+        </div>
       </div>
-      <p class="note" style="color: inherit; opacity: .8;"><span class="placeholder" style="color: inherit;">Placeholder.</span> Course list, sectors and upcoming batch dates to be confirmed by VRW.</p>
+
+      <div class="pane" role="tabpanel" id="pane-other" aria-labelledby="tab-other">
+        <div class="courses">
+          <article><h3>Internal Audit Training</h3><p>Learn to plan, conduct and document effective internal audits. Identify non-conformities and support continual improvement.</p></article>
+          <article><h3>Allergen Management &amp; Labelling</h3><p>Understand allergen identification, declaration and labelling requirements. Learn to prevent cross-contact and ensure accurate food labelling.</p></article>
+          <article><h3>Personal Hygiene &amp; GMP</h3><p>Understand personal hygiene practices and Good Manufacturing Practices (GMP). Implement effective hygiene and sanitation practices in daily operations.</p></article>
+          <article><h3>Food Safety Culture</h3><p>Build awareness of food safety responsibilities and best practices. Promote a strong food safety culture across the organisation.</p></article>
+          <article><h3>QMS / EMS / OHSAS / SEDEX</h3><p>Understand quality, environmental, and occupational health and safety management systems. Learn the fundamentals of compliance, workplace safety and ethical business practices.</p></article>
+          <article><h3>Soft Skills Training</h3><p>Develop communication, teamwork, leadership and problem-solving skills. Improve workplace performance and professional effectiveness.</p></article>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -466,37 +542,34 @@ footer a:hover { text-decoration: underline; }
     <div class="wrap">
       <div class="section-head">
         <p class="eyebrow">How a certification project runs</p>
-        <h2>From first visit to certificate</h2>
+        <h2>The complete procedure, from gap analysis visit to certificate</h2>
       </div>
-      <ol class="steps">
-        <li><b>Consultation</b><span>Understand your products, premises and target certification.</span></li>
-        <li><b>Gap assessment</b><span>On-site review and a written action plan.</span></li>
-        <li><b>Documentation</b><span>Manuals, HACCP plan, SOPs and records.</span></li>
-        <li><b>Training</b><span>FoSTaC and system training for your team.</span></li>
-        <li><b>Internal audit</b><span>A mock audit to close remaining gaps.</span></li>
-        <li><b>Certification</b><span>Support during the external audit and after.</span></li>
+      <ol class="steps10">
+        <li><b>Gap analysis</b><ul><li>Evaluation of the existing system</li><li>Identifying key processes and their sequence of interaction</li><li>Identifying areas of challenge and improvement</li></ul></li>
+        <li><b>Food safety / quality policy and objectives</b></li>
+        <li><b>Forming the Food Safety Management System team</b></li>
+        <li><b>Hazard analysis</b><span>Identifying critical control points and control measures</span></li>
+        <li><b>HACCP plans and monitoring charts</b></li>
+        <li><b>Registration with the certification agency</b></li>
+        <li><b>Training and development</b><ul><li>HACCP / food safety awareness and HACCP pre-requisites</li><li>Hazards and risks, their control and monitoring</li><li>GMPs and their compliance</li><li>Process controls and safety requirements</li><li>Food hygiene, housekeeping and support programmes</li></ul></li>
+        <li><b>Installing and implementing the FSMS</b><span>We assist your team on site</span></li>
+        <li><b>Internal audit and management review</b></li>
+        <li><b>Certification</b><span>We coordinate with the certification body and arrange successful certification</span></li>
       </ol>
+      <p class="closing">Our aim is one management system that integrates all your systems and processes into a complete framework, so you work as a single unit with unified objectives.</p>
     </div>
   </section>
 
-  <section class="section band" id="team">
-    <div class="wrap">
+  <section class="section band" id="resources">
+    <div class="wrap about">
       <div class="section-head">
-        <p class="eyebrow">Our people</p>
-        <h2>Trained trainers and trained assessors</h2>
-        <p>Training quality depends on who delivers it. Every FoSTaC session at VRW is run by trainers and assessors trained under the FSSAI programme.</p>
+        <p class="eyebrow">Resources · Our people</p>
+        <h2>Expert consultants and experienced trainers</h2>
+        <div class="stat"><b>10</b><span>in-house experts</span></div>
       </div>
-      <div class="people">
-        <article class="person">
-          <h3>Trainers</h3>
-          <p>Food technologists and industry professionals who teach from real plant and kitchen experience.</p>
-          <ul><li>Trained under FSSAI FoSTaC</li><li>Sector experience in catering, manufacturing and retail</li><li>Training in English, Hindi and regional languages <span class="placeholder">(confirm)</span></li></ul>
-        </article>
-        <article class="person">
-          <h3>Assessors</h3>
-          <p>Trained assessors evaluate every participant, so certificates reflect real understanding.</p>
-          <ul><li>Trained under FSSAI FoSTaC</li><li>Assessment kept separate from training delivery</li><li>Fair, consistent evaluation for every batch</li></ul>
-        </article>
+      <div class="about-body">
+        <p>Training quality depends on who delivers it. For example, every FoSTaC session at VRW is run by trainers and assessors trained under the FSSAI programme.</p>
+        <p>The greatest strength of VRW is its ability to reach the best level of the industry. We have an in-house team of 10 experts, including Food Technologists, Microbiologists and Hotel Management graduates, from various disciplines who deliver training and consultancy professionally. All our experts are qualified and experienced, and we deploy the best available for every assignment.</p>
       </div>
     </div>
   </section>
@@ -516,6 +589,12 @@ footer a:hover { text-decoration: underline; }
         <div>Warehouses &amp; cold chain<span>Storage and transport</span></div>
         <div>Exporters<span>Buyer and GFSI requirements</span></div>
         <div>Schools, hospitals &amp; campuses<span>Canteens and mess facilities</span></div>
+        <div>Packing material manufacturers<span>Food packaging suppliers</span></div>
+      </div>
+      <h3 class="sub-h">Why we are different</h3>
+      <div class="people">
+        <article class="person"><h3>Flexibility</h3><p>We believe the quality of our service is paramount for customer satisfaction, and that includes the way we process your certification. Flexibility to meet your requirements is important to us, and we will take your application through to certification as fast as you need.</p></article>
+        <article class="person"><h3>User-friendliness and support</h3><p>We design a user-friendly system that suits the level of your employees. We have no preconceived ideas on how you should apply FSMS or HACCP to your business. It is your company, and you know the best way to apply the standard's requirements to it.</p></article>
       </div>
     </div>
   </section>
@@ -564,6 +643,8 @@ footer a:hover { text-decoration: underline; }
             <option>ISO 22000 / FSSC 22000</option>
             <option>HACCP</option>
             <option>BRCGS / other certification</option>
+            <option>Management system training</option>
+            <option>Internal audit training</option>
             <option>Audit or gap assessment</option>
             <option>Something else</option>
           </select>
@@ -580,13 +661,13 @@ footer a:hover { text-decoration: underline; }
   <div class="wrap">
     <div>
       <b>V R The World Professional Services (VRW)</b>
-      <p>Food consulting, certification and FSSAI FoSTaC training.</p>
+      <p>Quality consultants &amp; training providers</p>
       <p>304, OK Plus Spaces, Malviya Nagar Industrial Area, Jaipur 302017 · +91 92140 69690</p>
     </div>
     <nav aria-label="Footer">
       <a href="#services">Consulting</a>
-      <a href="#certifications">Certifications</a>
-      <a href="#training">Training</a>
+      <a href="#trainings">Trainings</a>
+      <a href="#resources">Resources</a>
       <a href="#contact">Contact</a>
     </nav>
     <p>© 2026 VRW · vrwservices.com</p>
@@ -604,6 +685,17 @@ footer a:hover { text-decoration: underline; }
   nav.addEventListener('click', function (e) {
     if (e.target.tagName === 'A') { nav.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); }
   });
+  var tabs = document.querySelectorAll('.tabs [role="tab"]');
+  function showTab(t) {
+    tabs.forEach(function (b) {
+      var on = b === t;
+      b.setAttribute('aria-selected', on ? 'true' : 'false');
+      b.tabIndex = on ? 0 : -1;
+      document.getElementById(b.getAttribute('aria-controls')).hidden = !on;
+    });
+  }
+  tabs.forEach(function (b) { b.addEventListener('click', function () { showTab(b); }); });
+  if (tabs.length) showTab(tabs[0]);
   var form = document.getElementById('enquiry');
   var msg = document.getElementById('formMsg');
   var send = document.getElementById('f-send');
