@@ -13,7 +13,7 @@
 <title>V R The World Professional Services</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Source+Sans+3:wght@400;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Source+Sans+3:wght@400;600&family=IBM+Plex+Mono:wght@500&family=Tinos:wght@700&display=swap">
 <style>
 /* Layout: one centered column with full-bleed bands; a deep VRW-red hero, warm light working sections, gold used only for calls to action */
 :root {
@@ -73,10 +73,13 @@ p { margin: 0; }
 .top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 12px; }
 .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
 .brand img { width: 52px; height: auto; flex: none; }
-.brand b { font: 800 1.35rem/1 var(--f-display); letter-spacing: 0.02em; color: var(--brand); }
-:root[data-theme="dark"] .brand b { color: var(--fg); }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .brand b { color: var(--fg); } }
-.brand small { display: block; font: 500 0.62rem/1.2 var(--f-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+/* Wordmark matches VRW's letterhead: bold Times-style serif in letterhead red */
+.brand b, .brand small { font-family: "Tinos", "Times New Roman", Times, serif; font-weight: 700; color: #c00000; }
+.brand b { display: block; font-size: 1.75rem; line-height: 1; letter-spacing: 0.04em; }
+.brand small { display: block; margin-top: 3px; font-size: 0.74rem; line-height: 1.2; letter-spacing: 0.01em; text-transform: uppercase; }
+:root[data-theme="dark"] .brand b, :root[data-theme="dark"] .brand small { color: #ff6b5e; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .brand b, :root:not([data-theme="light"]) .brand small { color: #ff6b5e; } }
+@media (max-width: 480px) { .brand img { width: 44px; } .brand b { font-size: 1.5rem; } .brand small { font-size: 0.6rem; white-space: nowrap; } }
 .nav { display: flex; gap: 22px; align-items: center; }
 .nav a { text-decoration: none; font-weight: 600; color: var(--muted); font-size: 0.97rem; }
 .nav a:hover { color: var(--fg); }
