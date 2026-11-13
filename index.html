@@ -269,6 +269,8 @@ footer a:hover { text-decoration: underline; }
 .tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
 .tabs button { font: 600 0.98rem var(--f-body); padding: 10px 18px; border-radius: 999px; cursor: pointer; border: 1px solid color-mix(in srgb, var(--brand-ink) 35%, transparent); background: transparent; color: var(--brand-ink); }
 .tabs button[aria-selected="true"] { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.pane-h { font-size: 1.3rem; margin-bottom: 18px; }
+.tabs button:not([aria-selected="true"]):hover { background: color-mix(in srgb, var(--brand-ink) 12%, transparent); }
 .pane-intro { margin-bottom: 24px; max-width: 48rem; color: color-mix(in srgb, var(--brand-ink) 85%, transparent); }
 .levels.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .courses { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
@@ -486,12 +488,12 @@ footer a:hover { text-decoration: underline; }
       <div class="section-head">
         <p class="eyebrow">Trainings</p>
         <h2>Training programmes for food businesses</h2>
-        <p>FSSAI FoSTaC courses, food safety standard trainings and other management system trainings, delivered by expert trainers.</p>
+        <p>FSSAI FoSTaC courses, food safety standard trainings and other related trainings, delivered by expert trainers. Tap a tab below to see each group of courses.</p>
       </div>
       <div class="tabs" role="tablist" aria-label="Training categories">
-        <button role="tab" id="tab-fostac" aria-controls="pane-fostac" aria-selected="true">FoSTaC</button>
-        <button role="tab" id="tab-fs" aria-controls="pane-fs" aria-selected="false">Food safety trainings</button>
-        <button role="tab" id="tab-other" aria-controls="pane-other" aria-selected="false">Other management system trainings</button>
+        <button role="tab" id="tab-fostac" aria-controls="pane-fostac" aria-selected="true">FoSTaC (2 levels)</button>
+        <button role="tab" id="tab-fs" aria-controls="pane-fs" aria-selected="false">Food safety trainings (4)</button>
+        <button role="tab" id="tab-other" aria-controls="pane-other" aria-selected="false">Other related trainings (6)</button>
       </div>
 
       <div class="pane" role="tabpanel" id="pane-fostac" aria-labelledby="tab-fostac">
@@ -517,6 +519,7 @@ footer a:hover { text-decoration: underline; }
       </div>
 
       <div class="pane" role="tabpanel" id="pane-fs" aria-labelledby="tab-fs">
+        <h3 class="pane-h">Food safety trainings</h3>
         <div class="courses">
           <article><h3>HACCP Awareness &amp; Implementation</h3><p>Understand HACCP principles to identify, assess and control food safety hazards. Learn practical implementation methods to strengthen food safety systems.</p></article>
           <article><h3>ISO 22000</h3><p>Understand ISO 22000 requirements for Food Safety Management Systems (FSMS) that apply throughout the food chain to control food safety hazards. Learn to implement and maintain effective food safety management practices.</p></article>
@@ -526,6 +529,7 @@ footer a:hover { text-decoration: underline; }
       </div>
 
       <div class="pane" role="tabpanel" id="pane-other" aria-labelledby="tab-other">
+        <h3 class="pane-h">Other related trainings</h3>
         <div class="courses">
           <article><h3>Internal Audit Training</h3><p>Learn to plan, conduct and document effective internal audits. Identify non-conformities and support continual improvement.</p></article>
           <article><h3>Allergen Management &amp; Labelling</h3><p>Understand allergen identification, declaration and labelling requirements. Learn to prevent cross-contact and ensure accurate food labelling.</p></article>
