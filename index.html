@@ -309,8 +309,9 @@ p { margin: 0; }
 .monogram { width: 96px; height: 96px; border-radius: 50%; background: var(--brand); color: var(--brand-ink); display: grid; place-items: center; font: 800 2rem/1 var(--f-display); letter-spacing: 0.02em; }
 .desk-who b { font: 700 1.25rem/1.2 var(--f-display); }
 .desk-who span { color: var(--muted); font-size: 0.98rem; }
-.creds { list-style: none; margin: 4px 0 0; padding: 0; display: grid; gap: 8px; }
-.creds li { font: 500 0.78rem/1.3 var(--f-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--brand); border-left: 3px solid var(--accent); padding-left: 10px; }
+.creds { list-style: none; margin: 6px 0 0; padding: 0; display: grid; gap: 10px; width: 100%; max-width: 340px; }
+.creds li { position: relative; font: 600 0.98rem/1.4 var(--f-body, "Source Sans 3", system-ui, sans-serif); color: var(--fg); padding-left: 22px; }
+.creds li::before { content: ""; position: absolute; left: 4px; top: 0.5em; width: 8px; height: 8px; border-radius: 50%; background: var(--brand); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 55%, transparent); }
 :root[data-theme="dark"] .creds li { color: var(--fg); }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .creds li { color: var(--fg); } }
 .letter { display: grid; gap: 16px; font-size: 1.12rem; max-width: 44rem; }
