@@ -3,8 +3,8 @@
 
 // Where enquiries are delivered. Add more addresses separated by commas.
 $to = 'sonia@vrwservices.com, info@vrwservices.com';
-// Sender address. Must be on vrwservices.com so the email passes spam checks.
-$from = 'website@vrwservices.com';
+// Sender address: VRW's real Google Workspace mailbox. Hostinger is allowed to send for vrwservices.com by the SPF record.
+$from = 'info@vrwservices.com';
 
 date_default_timezone_set('Asia/Kolkata');
 
