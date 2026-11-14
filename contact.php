@@ -61,13 +61,52 @@ $body .= "Interested:  $need\n\n";
 $body .= "Message:\n" . ($message ?: '-') . "\n\n";
 $body .= "Sent " . date('d M Y, H:i') . " IST\n";
 
-$headers  = "From: VRW Website <$from>\r\n";
-if ($email !== '') {
-    $headers .= "Reply-To: " . str_replace(['<', '>', ','], '', $name) . " <$email>\r\n";
+// Preferred: send through VRW's Google Workspace account, so Gmail trusts the email.
+// The login lives in vrw-mail-config.php one folder ABOVE public_html (never in this repo):
+//   <?php return ['user' => 'info@vrwservices.com', 'pass' => 'the 16-letter app password'];
+$sent = false;
+$config = dirname(__DIR__) . '/vrw-mail-config.php';
+if (is_readable($config)) {
+    $cfg = include $config;
+    require __DIR__ . '/lib/PHPMailer/Exception.php';
+    require __DIR__ . '/lib/PHPMailer/PHPMailer.php';
+    require __DIR__ . '/lib/PHPMailer/SMTP.php';
+    try {
+        $m = new PHPMailer\PHPMailer\PHPMailer(true);
+        $m->isSMTP();
+        $m->Host       = 'smtp.gmail.com';
+        $m->SMTPAuth   = true;
+        $m->Username   = $cfg['user'];
+        $m->Password   = $cfg['pass'];
+        $m->SMTPSecure = PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_SMTPS;
+        $m->Port       = 465;
+        $m->Timeout    = 15;
+        $m->CharSet    = 'UTF-8';
+        $m->setFrom($cfg['user'], 'VRW Website');
+        foreach (array_map('trim', explode(',', $to)) as $addr) {
+            $m->addAddress($addr);
+        }
+        if ($email !== '') {
+            $m->addReplyTo($email, $name);
+        }
+        $m->Subject = $subject;
+        $m->Body    = $body;
+        $m->send();
+        $sent = true;
+    } catch (Exception $e) {
+        error_log('VRW contact form SMTP failed: ' . $e->getMessage());
+    }
 }
-$headers .= "MIME-Version: 1.0\r\n";
-$headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
 
-$sent = mail($to, '=?UTF-8?B?' . base64_encode($subject) . '?=', $body, $headers, '-f' . $from);
+// Fallback: the server's own mail (works, but Gmail may file it in Spam).
+if (!$sent) {
+    $headers  = "From: VRW Website <$from>\r\n";
+    if ($email !== '') {
+        $headers .= "Reply-To: " . str_replace(['<', '>', ','], '', $name) . " <$email>\r\n";
+    }
+    $headers .= "MIME-Version: 1.0\r\n";
+    $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
+    $sent = mail($to, '=?UTF-8?B?' . base64_encode($subject) . '?=', $body, $headers, '-f' . $from);
+}
 
 finish($sent, $sent ? '' : 'Your enquiry could not be sent. Please call +91 92140 69690 or email info@vrwservices.com.');
